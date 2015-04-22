@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DEV-PC</Machine>
+    <WindowsUser>oyvind</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>56f667a3-a9a9-49a0-a59c-1b235cccc3ff</PackageIdentityName>
+    <IntermediateOutputPath>E:\VSProjects\ProjectJediSolution\ProjectJediApplication\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>014E90F45A9A79AA750DA7B2E4F379DFA8B438908A4A74CA89C7B240C10AFA61</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>56f667a3-a9a9-49a0-a59c-1b235cccc3ff_1.0.0.0_neutral__zksppsrbb6wbc</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>56f667a3-a9a9-49a0-a59c-1b235cccc3ff_zksppsrbb6wbc!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>56f667a3-a9a9-49a0-a59c-1b235cccc3ff</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=oyvind</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-04-22T13:06:53.751</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.exe">
+      <PackagePath>ProjectJediApplication.exe</PackagePath>
+      <Modified>2015-04-22T13:38:23.233</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\DataModel\bin\Debug\DataModel.dll">
+      <PackagePath>DataModel.dll</PackagePath>
+      <Modified>2015-04-22T09:37:06.810</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll">
+      <PackagePath>ProjectJediDataSource.dll</PackagePath>
+      <Modified>2015-04-22T13:38:16.360</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T05:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T05:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T05:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T05:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\profile.jpg">
+      <PackagePath>Assets\profile.jpg</PackagePath>
+      <Modified>2015-04-21T11:59:31.927</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2015-04-22T09:37:32.072</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\GroupsPage.xbf">
+      <PackagePath>GroupsPage.xbf</PackagePath>
+      <Modified>2015-04-22T13:38:22.799</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2015-04-22T09:37:32.073</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProgressPage.xbf">
+      <PackagePath>ProgressPage.xbf</PackagePath>
+      <Modified>2015-04-22T09:37:32.073</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentsPage.xbf">
+      <PackagePath>StudentsPage.xbf</PackagePath>
+      <Modified>2015-04-22T13:29:07.057</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentTasksPage.xbf">
+      <PackagePath>StudentTasksPage.xbf</PackagePath>
+      <Modified>2015-04-22T13:38:22.799</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\TimeSheetsPage.xbf">
+      <PackagePath>TimeSheetsPage.xbf</PackagePath>
+      <Modified>2015-04-22T13:38:22.799</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.xr.xml">
+      <PackagePath>ProjectJediApplication.xr.xml</PackagePath>
+      <Modified>2015-04-22T13:06:45.540</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2015-04-22T13:06:53.173</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

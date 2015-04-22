@@ -1,0 +1,18 @@
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.dll.config
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.dll
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.pdb
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.dll
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.xml
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\obj\Debug\ProjectJediDataModel.dll
+C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\ProjectJediDataModel\obj\Debug\ProjectJediDataModel.pdb
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.dll.config
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.dll
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\ProjectJediDataModel.pdb
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.dll
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.xml
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\obj\Debug\ProjectJediDataModel.dll
+E:\VSProjects\ProjectJediSolution\ProjectJediDataModel\obj\Debug\ProjectJediDataModel.pdb

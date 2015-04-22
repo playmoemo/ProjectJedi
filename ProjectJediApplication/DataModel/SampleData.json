@@ -1,0 +1,476 @@
+﻿{
+
+    "Students": [
+        {
+            "StudentId": 4,
+            "FirstName": "Oyvind",
+            "LastName": "Trinborg",
+            "UserName": "oyvindt",
+            "Groups": [
+                {
+                    "GroupId": 5,
+                    "GroupName": "SoftEngProject",
+                    "Description": "This course expect the delivery of a system for use in health care services.",
+                    "Students": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 1,
+                            "StudentTaskName": "Create last page",
+                            "Description": "Create the first page good",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 1,
+                            "StudentId": 4,
+                            "GroupId": 5
+                        }
+                    ]
+                }
+            ],
+            "StudentTasks": [
+                {
+                    "StudentTaskId": 1,
+                    "StudentTaskName": "Create last page",
+                    "Description": "Create the first page good",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 1,
+                    "StudentId": 4,
+                    "GroupId": 5
+                }
+            ],
+            "TimeSheets": [
+                {
+                    "TimeSheetId": 1,
+                    "TimeSheetName": "SETimeSheet",
+                    "StudentId": 4,
+                    "GroupId": 5,
+                    "Activities": [
+                        {
+                            "ActivityId": 1,
+                            "ActivityName": "SE oyvindt activity",
+                            "StartTime": "\/Date(1234656000000)\/",
+                            "StopTime": "\/Date(1234656000000)\/",
+                            "Hours": 5,
+                            "TimeSheetId": 1
+                        }
+                    ]
+                },
+                {
+                    "TimeSheetId": 4,
+                    "TimeSheetName": "BTimeSheet",
+                    "StudentId": 4,
+                    "GroupId": 6,
+                    "Activities": [
+                        {
+                            "ActivityId": 4,
+                            "ActivityName": "Bachelor oyvindt activity",
+                            "StartTime": "\/Date(1234656000000)\/",
+                            "StopTime": "\/Date(1234656000000)\/",
+                            "Hours": 7,
+                            "TimeSheetId": 4
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "StudentId": 5,
+            "FirstName": "Isabel",
+            "LastName": "Vestli",
+            "UserName": "isabellev",
+            "Groups": [ ],
+            "StudentTasks": [
+                {
+                    "StudentTaskId": 2,
+                    "StudentTaskName": "Make some cool stuff",
+                    "Description": "Create some cool stuff real good.",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 0,
+                    "StudentId": 5,
+                    "GroupId": 5
+                }
+            ],
+            "TimeSheets": [
+                {
+                    "TimeSheetId": 2,
+                    "TimeSheetName": "SoftwareETimeSheet",
+                    "StudentId": 5,
+                    "GroupId": 5,
+                    "Activities": [
+                        {
+                            "ActivityId": 2,
+                            "ActivityName": "SE isabellev activity",
+                            "StartTime": "\/Date(1234656000000)\/",
+                            "StopTime": "\/Date(1234656000000)\/",
+                            "Hours": 3,
+                            "TimeSheetId": 2
+                        }
+                    ]
+                },
+                {
+                    "TimeSheetId": 3,
+                    "TimeSheetName": "BachelorTimeSheet",
+                    "StudentId": 5,
+                    "GroupId": 6,
+                    "Activities": [
+                        {
+                            "ActivityId": 3,
+                            "ActivityName": "Bachelor isabellev activity",
+                            "StartTime": "\/Date(1234656000000)\/",
+                            "StopTime": "\/Date(1234656000000)\/",
+                            "Hours": 1,
+                            "TimeSheetId": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "StudentId": 6,
+            "FirstName": "Kristin",
+            "LastName": "Kveine",
+            "UserName": "kristikv",
+            "Groups": [ ],
+            "StudentTasks": [
+                {
+                    "StudentTaskId": 7,
+                    "StudentTaskName": "Do the work required",
+                    "Description": "Implement something cool and useful.",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 0,
+                    "StudentId": 6,
+                    "GroupId": 5
+                }
+            ],
+            "TimeSheets": [
+                {
+                    "TimeSheetId": 5,
+                    "TimeSheetName": "BachTimeSheet",
+                    "StudentId": 6,
+                    "GroupId": 6,
+                    "Activities": [
+                        {
+                            "ActivityId": 5,
+                            "ActivityName": "Bachelor kristikv activity",
+                            "StartTime": "\/Date(1234656000000)\/",
+                            "StopTime": "\/Date(1234656000000)\/",
+                            "Hours": 2,
+                            "TimeSheetId": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "Groups": [
+        {
+            "GroupId": 5,
+            "GroupName": "SoftEngProject",
+            "Description": "This course expect the delivery of a system for use in health care services.",
+            "Students": [
+                {
+                    "StudentId": 4,
+                    "FirstName": "Oyvind",
+                    "LastName": "Trinborg",
+                    "UserName": "oyvindt",
+                    "Groups": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 1,
+                            "StudentTaskName": "Create last page",
+                            "Description": "Create the first page good",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 1,
+                            "StudentId": 4,
+                            "GroupId": 5
+                        }
+                    ],
+                    "TimeSheets": [ ]
+                },
+                {
+                    "StudentId": 5,
+                    "FirstName": "Isabel",
+                    "LastName": "Vestli",
+                    "UserName": "isabellev",
+                    "Groups": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 1,
+                            "StudentTaskName": "Create last page",
+                            "Description": "Create the first page good",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 1,
+                            "StudentId": 4,
+                            "GroupId": 5
+                        }
+                    ],
+                    "TimeSheets": [ ]
+                }
+            ],
+            "StudentTasks": [
+                {
+                    "StudentTaskId": 1,
+                    "StudentTaskName": "Create last page",
+                    "Description": "Create the first page good",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 1,
+                    "StudentId": 4,
+                    "GroupId": 5
+                },
+                {
+                    "StudentTaskId": 2,
+                    "StudentTaskName": "Make some cool stuff",
+                    "Description": "Create some cool stuff real good.",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 0,
+                    "StudentId": 5,
+                    "GroupId": 5
+                },
+                {
+                    "StudentTaskId": 7,
+                    "StudentTaskName": "Do the work required",
+                    "Description": "Implement something cool and useful.",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 0,
+                    "StudentId": 6,
+                    "GroupId": 5
+                }
+            ]
+        },
+        {
+            "GroupId": 6,
+            "GroupName": "BachelorProject",
+            "Description": "MicroTasks Android application for IFE.",
+            "Students": [
+                {
+                    "StudentId": 4,
+                    "FirstName": "Oyvind",
+                    "LastName": "Trinborg",
+                    "UserName": "oyvindt",
+                    "Groups": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 8,
+                            "StudentTaskName": "Design Android Application",
+                            "Description": "Design the app based on requirements.",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 0,
+                            "StudentId": 4,
+                            "GroupId": 6
+                        }
+                    ],
+                    "TimeSheets": [ ]
+                },
+                {
+                    "StudentId": 5,
+                    "FirstName": "Isabel",
+                    "LastName": "Vestli",
+                    "UserName": "isabellev",
+                    "Groups": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 1,
+                            "StudentTaskName": "Create last page",
+                            "Description": "Create the first page good",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 1,
+                            "StudentId": 4,
+                            "GroupId": 6
+                        }
+                    ],
+                    "TimeSheets": [ ]
+                },
+                {
+                    "StudentId": 6,
+                    "FirstName": "Kristin",
+                    "LastName": "Kveine",
+                    "UserName": "kristikv",
+                    "Groups": [ ],
+                    "StudentTasks": [
+                        {
+                            "StudentTaskId": 1,
+                            "StudentTaskName": "Create last page",
+                            "Description": "Create the first page good",
+                            "Deadline": "\/Date(1234656000000)\/",
+                            "Status": 1,
+                            "StudentId": 4,
+                            "GroupId": 6
+                        }
+                    ],
+                    "TimeSheets": [ ]
+                }
+            ],
+            "StudentTasks": [
+                {
+                    "StudentTaskId": 8,
+                    "StudentTaskName": "Work hard",
+                    "Description": "Implement something cool and useful.",
+                    "Deadline": "\/Date(1234656000000)\/",
+                    "Status": 0,
+                    "StudentId": 4,
+                    "GroupId": 6
+                }
+            ]
+        }
+    ],
+    "StudentTasks": [
+        {
+            "StudentTaskId": 1,
+            "StudentTaskName": "Create last page",
+            "Description": "Create the first page good",
+            "Deadline": "\/Date(1234656000000)\/",
+            "Status": 1,
+            "StudentId": 4,
+            "GroupId": 5
+        },
+        {
+            "StudentTaskId": 2,
+            "StudentTaskName": "Make some cool stuff",
+            "Description": "Create some cool stuff real good.",
+            "Deadline": "\/Date(1234656000000)\/",
+            "Status": 0,
+            "StudentId": 5,
+            "GroupId": 5
+        },
+        {
+            "StudentTaskId": 7,
+            "StudentTaskName": "Do the work required",
+            "Description": "Implement something cool and useful.",
+            "Deadline": "\/Date(1234656000000)\/",
+            "Status": 0,
+            "StudentId": 6,
+            "GroupId": 5
+        },
+        {
+            "StudentTaskId": 8,
+            "StudentTaskName": "Work hard",
+            "Description": "Implement something cool and useful.",
+            "Deadline": "\/Date(1234656000000)\/",
+            "Status": 0,
+            "StudentId": 4,
+            "GroupId": 6
+        }
+    ],
+    "TimeSheets": [
+        {
+            "TimeSheetId": 1,
+            "TimeSheetName": "SETimeSheet",
+            "StudentId": 4,
+            "GroupId": 5,
+            "Activities": [
+                {
+                    "ActivityId": 1,
+                    "ActivityName": "SE oyvindt activity",
+                    "StartTime": "\/Date(1234656000000)\/",
+                    "StopTime": "\/Date(1234656000000)\/",
+                    "Hours": 5,
+                    "TimeSheetId": 1
+                }
+            ]
+        },
+        {
+            "TimeSheetId": 2,
+            "TimeSheetName": "SoftwareETimeSheet",
+            "StudentId": 5,
+            "GroupId": 5,
+            "Activities": [
+                {
+                    "ActivityId": 2,
+                    "ActivityName": "SE isabellev activity",
+                    "StartTime": "\/Date(1234656000000)\/",
+                    "StopTime": "\/Date(1234656000000)\/",
+                    "Hours": 3,
+                    "TimeSheetId": 2
+                }
+            ]
+        },
+        {
+            "TimeSheetId": 3,
+            "TimeSheetName": "BachelorTimeSheet",
+            "StudentId": 5,
+            "GroupId": 6,
+            "Activities": [
+                {
+                    "ActivityId": 3,
+                    "ActivityName": "Bachelor isabellev activity",
+                    "StartTime": "\/Date(1234656000000)\/",
+                    "StopTime": "\/Date(1234656000000)\/",
+                    "Hours": 1,
+                    "TimeSheetId": 3
+                }
+            ]
+        },
+        {
+            "TimeSheetId": 4,
+            "TimeSheetName": "BTimeSheet",
+            "StudentId": 4,
+            "GroupId": 6,
+            "Activities": [
+                {
+                    "ActivityId": 4,
+                    "ActivityName": "Bachelor oyvindt activity",
+                    "StartTime": "\/Date(1234656000000)\/",
+                    "StopTime": "\/Date(1234656000000)\/",
+                    "Hours": 7,
+                    "TimeSheetId": 4
+                }
+            ]
+        },
+        {
+            "TimeSheetId": 5,
+            "TimeSheetName": "BachTimeSheet",
+            "StudentId": 6,
+            "GroupId": 6,
+            "Activities": [
+                {
+                    "ActivityId": 5,
+                    "ActivityName": "Bachelor kristikv activity",
+                    "StartTime": "\/Date(1234656000000)\/",
+                    "StopTime": "\/Date(1234656000000)\/",
+                    "Hours": 2,
+                    "TimeSheetId": 5
+                }
+            ]
+        }
+    ],
+    "Activities": [
+        {
+            "ActivityId": 1,
+            "ActivityName": "SE oyvindt activity",
+            "StartTime": "\/Date(1234656000000)\/",
+            "StopTime": "\/Date(1234656000000)\/",
+            "Hours": 5,
+            "TimeSheetId": 1
+        },
+        {
+            "ActivityId": 2,
+            "ActivityName": "SE isabellev activity",
+            "StartTime": "\/Date(1234656000000)\/",
+            "StopTime": "\/Date(1234656000000)\/",
+            "Hours": 3,
+            "TimeSheetId": 2
+        },
+        {
+            "ActivityId": 3,
+            "ActivityName": "Bachelor isabellev activity",
+            "StartTime": "\/Date(1234656000000)\/",
+            "StopTime": "\/Date(1234656000000)\/",
+            "Hours": 1,
+            "TimeSheetId": 3
+        },
+        {
+            "ActivityId": 4,
+            "ActivityName": "Bachelor oyvindt activity",
+            "StartTime": "\/Date(1234656000000)\/",
+            "StopTime": "\/Date(1234656000000)\/",
+            "Hours": 7,
+            "TimeSheetId": 4
+        },
+        {
+            "ActivityId": 5,
+            "ActivityName": "Bachelor kristikv activity",
+            "StartTime": "\/Date(1234656000000)\/",
+            "StopTime": "\/Date(1234656000000)\/",
+            "Hours": 2,
+            "TimeSheetId": 5
+        }
+    ]
+}
