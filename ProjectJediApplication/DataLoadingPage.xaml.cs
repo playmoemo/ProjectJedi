@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,25 +25,35 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class DataLoadingPage : Page
     {
+        private Boolean willLoadLogin = true;
+
+        private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
 
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
         public DataLoadingPage()
         {
             this.InitializeComponent();
-            //txtCount.Text = "50";
-            txtCount.Text = this.DefaultViewModel.Count().ToString();
 
-            
+            // Setup the navigation helper
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += navigationHelper_LoadState;
 
-            //getDataFromDatabase();
             activateDataLoading();
-            //txtCount.Text = this.DefaultViewModel.Count().ToString();
-
             
+            // retrieve state of "automaticLogin", and load/not load log-in page
         }
 
         private async void activateDataLoading()
@@ -56,8 +67,16 @@ namespace ProjectJediApplication
             {
                 progressLoadingData.IsActive = false;
                 progressLoadingData.Visibility = Visibility.Collapsed;
-
-                this.Frame.Navigate(typeof(MainPage));
+                
+                if (willLoadLogin)
+                {
+                    this.Frame.Navigate(typeof(LoginPage));
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(MainPage));
+                }
+                
             }
             else
             {
@@ -68,6 +87,7 @@ namespace ProjectJediApplication
             }
         }
 
+        
         private async Task<Boolean> getDataFromDatabase()
         {
             try { 
@@ -79,17 +99,31 @@ namespace ProjectJediApplication
                 return true;
 
             } catch(Exception e) {
+                //USE PROPER EXCEPTION HANDLING!!!
                 e.ToString();
                 return false;
             }
-            
-            //if (this.DefaultViewModel.Count == 4)
+        }
+
+        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+            // Restore the previously saved state associated with this page
+            if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))
+            {
+                //ApplicationDataContainer roamingSettings = ApplicationData.Current.RoamingSettings;
+                willLoadLogin = (Boolean)e.PageState["automaticLogin"];
+            }
+            //if (e.PageState == null)
             //{
-            //    return true;
+                
             //}
             //else
             //{
-            //    return false;
+            //    // Restore the previously saved state associated with this page
+            //    if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))
+            //    {
+                    
+            //    }
             //}
         }
     }

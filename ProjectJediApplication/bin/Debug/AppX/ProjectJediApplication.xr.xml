@@ -67,6 +67,8 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontWeight" />
     </RootType>
@@ -129,9 +131,9 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Source" />
       <RootProperty Name="Stretch" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="MaxHeight" />
-      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
@@ -160,13 +162,13 @@
       <RootProperty Name="Command" />
       <RootProperty Name="Style" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="Background" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
-      <RootProperty Name="FontSize" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Content" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.VisualStateGroup">
@@ -190,6 +192,24 @@
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="ProjectJediApplication.GroupsPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="Content" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
+    </RootType>
     <RootType FullName="ProjectJediApplication.LoginPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.VariableSizedWrapGrid">
       <RootProperty Name="Orientation" />

@@ -21,3 +21,5 @@ HUSK!: lage en BlancPage hvor data hentes fra DB, og som viser App-logo + Progre
 Design:
 - Legge til Logo på DataLoadingPage.xaml
 - Lage custom Style for bakgrunner, margin, padding, font, etc.
+
+- bytte alle textressurser til StaticResource....

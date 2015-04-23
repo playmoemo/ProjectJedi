@@ -9,8 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="130"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,5 +21,51 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
+        
+        <!--Header-->
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,30">
+            <Image Source="Assets/Images/Logo.png" HorizontalAlignment="Left"/>
+            <TextBlock Text="Project Jedi" FontSize="70" VerticalAlignment="Center" Margin="30,0,30,0"/>
+            <Image Source="Assets/Images/Logo.png" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Width="700" FontSize="30" VerticalAlignment="Center">
+            Please provide your full name, user name and email. This information is useful to your collaborators.
+        </TextBlock>
+        <!--Left input area-->
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="First Name:" FontSize="40"/>
+                <TextBox x:Name="txtbFirstName" Width="350" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Last Name:" FontSize="40"/>
+                <TextBox x:Name="txtbLastName" Width="350" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Email:" FontSize="40"/>
+                <TextBox x:Name="txtbEmail" ToolTipService.ToolTip="name@domainname.domain" Width="350" Margin="110,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <!--Right input area-->
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Username:" FontSize="40"/>
+                <TextBox x:Name="txtbUserName" Width="350" Margin="30,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Password:" FontSize="40"/>
+                <PasswordBox x:Name="passwordPassword" Width="350" Margin="43,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Password:" FontSize="40"/>
+                <PasswordBox x:Name="passwordConfirmPassword" Width="350" Margin="43,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <!--Bottom Components-->
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <CheckBox x:Name="checkNotRemainLoggedIn" Content="I don't want to remain logged in" FontSize="20" Margin="10" HorizontalAlignment="Left"/>
+            <Button x:Name="btnSaveUserInformation" Content="Save" FontSize="40" Background="Green" HorizontalAlignment="Right" Margin="300,0,0,0" Click="btnSaveUserInformation_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

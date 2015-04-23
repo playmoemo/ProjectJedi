@@ -10,10 +10,19 @@
        <Types>
         <Type Name="LoginPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="Login" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2015-04-23 09:53:27Z" FixCategory="Breaking">
+          <Message Id="Login" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2015-04-23 15:58:23Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Replace the term 'Login' in type name 'LoginPage' with the preferred alternate 'LogOn'.</Issue>
           </Message>
          </Messages>
+         <Members>
+          <Member Name="#btnSaveUserInformation_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="student" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2015-04-23 15:58:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="LoginPage.xaml.cs" Line="73">'LoginPage.btnSaveUserInformation_Click(object, RoutedEventArgs)' declares a variable, 'student', of type 'Student', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
         </Type>
        </Types>
       </Namespace>
@@ -23,7 +32,7 @@
          <Members>
           <Member Name="#Activities" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-23 09:53:27Z" FixCategory="NonBreaking">
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-23 15:58:23Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication\DataModel" File="SampleDataSource.cs" Line="42">The 'this' parameter (or 'Me' in Visual Basic) of 'SampleDataSource.Activities' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
             </Message>
            </Messages>
@@ -44,6 +53,16 @@
    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+   <Name>Remove unused locals</Name>
+   <Description>Remove locals that are not used or are only assigned to in method implementations.</Description>
+   <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182278.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">Warning</MessageLevel>
    <File Name="performancerules.dll" Version="12.0.0.0" />

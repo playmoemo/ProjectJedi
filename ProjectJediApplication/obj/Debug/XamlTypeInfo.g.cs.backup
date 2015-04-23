@@ -131,9 +131,9 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
             _typeNameTable[3] = "ProjectJediApplication.Common.ObservableDictionary";
             _typeNameTable[4] = "Object";
             _typeNameTable[5] = "String";
-            _typeNameTable[6] = "ProjectJediApplication.GroupsPage";
-            _typeNameTable[7] = "ProjectJediApplication.Common.NavigationHelper";
-            _typeNameTable[8] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[6] = "ProjectJediApplication.Common.NavigationHelper";
+            _typeNameTable[7] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[8] = "ProjectJediApplication.GroupsPage";
             _typeNameTable[9] = "ProjectJediApplication.LoginPage";
             _typeNameTable[10] = "ProjectJediApplication.MainPage";
             _typeNameTable[11] = "ProjectJediApplication.ProgressPage";
@@ -148,9 +148,9 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
             _typeTable[3] = typeof(global::ProjectJediApplication.Common.ObservableDictionary);
             _typeTable[4] = typeof(global::System.Object);
             _typeTable[5] = typeof(global::System.String);
-            _typeTable[6] = typeof(global::ProjectJediApplication.GroupsPage);
-            _typeTable[7] = typeof(global::ProjectJediApplication.Common.NavigationHelper);
-            _typeTable[8] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[6] = typeof(global::ProjectJediApplication.Common.NavigationHelper);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[8] = typeof(global::ProjectJediApplication.GroupsPage);
             _typeTable[9] = typeof(global::ProjectJediApplication.LoginPage);
             _typeTable[10] = typeof(global::ProjectJediApplication.MainPage);
             _typeTable[11] = typeof(global::ProjectJediApplication.ProgressPage);
@@ -193,7 +193,7 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
 
         private object Activate_0_DataLoadingPage() { return new global::ProjectJediApplication.DataLoadingPage(); }
         private object Activate_3_ObservableDictionary() { return new global::ProjectJediApplication.Common.ObservableDictionary(); }
-        private object Activate_6_GroupsPage() { return new global::ProjectJediApplication.GroupsPage(); }
+        private object Activate_8_GroupsPage() { return new global::ProjectJediApplication.GroupsPage(); }
         private object Activate_9_LoginPage() { return new global::ProjectJediApplication.LoginPage(); }
         private object Activate_10_MainPage() { return new global::ProjectJediApplication.MainPage(); }
         private object Activate_11_ProgressPage() { return new global::ProjectJediApplication.ProgressPage(); }
@@ -222,6 +222,7 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
                 userType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_DataLoadingPage;
                 userType.AddMemberName("DefaultViewModel");
+                userType.AddMemberName("NavigationHelper");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -250,29 +251,30 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
                 xamlType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  ProjectJediApplication.GroupsPage
-                userType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_GroupsPage;
-                userType.AddMemberName("DefaultViewModel");
-                userType.AddMemberName("NavigationHelper");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 7:   //  ProjectJediApplication.Common.NavigationHelper
+            case 6:   //  ProjectJediApplication.Common.NavigationHelper
                 userType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Windows.UI.Xaml.DependencyObject
+            case 7:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  ProjectJediApplication.GroupsPage
+                userType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_8_GroupsPage;
+                userType.AddMemberName("DefaultViewModel");
+                userType.AddMemberName("NavigationHelper");
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
 
             case 9:   //  ProjectJediApplication.LoginPage
                 userType = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_9_LoginPage;
+                userType.AddMemberName("NavigationHelper");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -330,57 +332,67 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
             var that = (global::ProjectJediApplication.DataLoadingPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_1_GroupsPage_DefaultViewModel(object instance)
+        private object get_1_DataLoadingPage_NavigationHelper(object instance)
+        {
+            var that = (global::ProjectJediApplication.DataLoadingPage)instance;
+            return that.NavigationHelper;
+        }
+        private object get_2_GroupsPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.GroupsPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_2_GroupsPage_NavigationHelper(object instance)
+        private object get_3_GroupsPage_NavigationHelper(object instance)
         {
             var that = (global::ProjectJediApplication.GroupsPage)instance;
             return that.NavigationHelper;
         }
-        private object get_3_MainPage_DefaultViewModel(object instance)
+        private object get_4_LoginPage_NavigationHelper(object instance)
+        {
+            var that = (global::ProjectJediApplication.LoginPage)instance;
+            return that.NavigationHelper;
+        }
+        private object get_5_MainPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.MainPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_4_ProgressPage_DefaultViewModel(object instance)
+        private object get_6_ProgressPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.ProgressPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_5_ProgressPage_NavigationHelper(object instance)
+        private object get_7_ProgressPage_NavigationHelper(object instance)
         {
             var that = (global::ProjectJediApplication.ProgressPage)instance;
             return that.NavigationHelper;
         }
-        private object get_6_StudentsPage_DefaultViewModel(object instance)
+        private object get_8_StudentsPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.StudentsPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_7_StudentsPage_NavigationHelper(object instance)
+        private object get_9_StudentsPage_NavigationHelper(object instance)
         {
             var that = (global::ProjectJediApplication.StudentsPage)instance;
             return that.NavigationHelper;
         }
-        private object get_8_StudentTasksPage_DefaultViewModel(object instance)
+        private object get_10_StudentTasksPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.StudentTasksPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_9_StudentTasksPage_NavigationHelper(object instance)
+        private object get_11_StudentTasksPage_NavigationHelper(object instance)
         {
             var that = (global::ProjectJediApplication.StudentTasksPage)instance;
             return that.NavigationHelper;
         }
-        private object get_10_TimeSheetsPage_DefaultViewModel(object instance)
+        private object get_12_TimeSheetsPage_DefaultViewModel(object instance)
         {
             var that = (global::ProjectJediApplication.TimeSheetsPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_11_TimeSheetsPage_NavigationHelper(object instance)
+        private object get_13_TimeSheetsPage_NavigationHelper(object instance)
         {
             var that = (global::ProjectJediApplication.TimeSheetsPage)instance;
             return that.NavigationHelper;
@@ -399,70 +411,82 @@ namespace ProjectJediApplication.ProjectJediApplication_XamlTypeInfo
                 xamlMember.Getter = get_0_DataLoadingPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "ProjectJediApplication.DataLoadingPage.NavigationHelper":
+                userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.DataLoadingPage");
+                xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
+                xamlMember.Getter = get_1_DataLoadingPage_NavigationHelper;
+                xamlMember.SetIsReadOnly();
+                break;
             case "ProjectJediApplication.GroupsPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.GroupsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_1_GroupsPage_DefaultViewModel;
+                xamlMember.Getter = get_2_GroupsPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.GroupsPage.NavigationHelper":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.GroupsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
-                xamlMember.Getter = get_2_GroupsPage_NavigationHelper;
+                xamlMember.Getter = get_3_GroupsPage_NavigationHelper;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "ProjectJediApplication.LoginPage.NavigationHelper":
+                userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.LoginPage");
+                xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
+                xamlMember.Getter = get_4_LoginPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.MainPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.MainPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_3_MainPage_DefaultViewModel;
+                xamlMember.Getter = get_5_MainPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.ProgressPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.ProgressPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_4_ProgressPage_DefaultViewModel;
+                xamlMember.Getter = get_6_ProgressPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.ProgressPage.NavigationHelper":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.ProgressPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
-                xamlMember.Getter = get_5_ProgressPage_NavigationHelper;
+                xamlMember.Getter = get_7_ProgressPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.StudentsPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.StudentsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_6_StudentsPage_DefaultViewModel;
+                xamlMember.Getter = get_8_StudentsPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.StudentsPage.NavigationHelper":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.StudentsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
-                xamlMember.Getter = get_7_StudentsPage_NavigationHelper;
+                xamlMember.Getter = get_9_StudentsPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.StudentTasksPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.StudentTasksPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_8_StudentTasksPage_DefaultViewModel;
+                xamlMember.Getter = get_10_StudentTasksPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.StudentTasksPage.NavigationHelper":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.StudentTasksPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
-                xamlMember.Getter = get_9_StudentTasksPage_NavigationHelper;
+                xamlMember.Getter = get_11_StudentTasksPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.TimeSheetsPage.DefaultViewModel":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.TimeSheetsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "ProjectJediApplication.Common.ObservableDictionary");
-                xamlMember.Getter = get_10_TimeSheetsPage_DefaultViewModel;
+                xamlMember.Getter = get_12_TimeSheetsPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "ProjectJediApplication.TimeSheetsPage.NavigationHelper":
                 userType = (global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ProjectJediApplication.TimeSheetsPage");
                 xamlMember = new global::ProjectJediApplication.ProjectJediApplication_XamlTypeInfo.XamlMember(this, "NavigationHelper", "ProjectJediApplication.Common.NavigationHelper");
-                xamlMember.Getter = get_11_TimeSheetsPage_NavigationHelper;
+                xamlMember.Getter = get_13_TimeSheetsPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             }
