@@ -66,6 +66,8 @@ C:\Users\oyvind\Documents\Visual Studio 2013\Projects\ProjectJediSolution\Projec
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll.config
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.pdb
+E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll.CodeAnalysisLog.xml
+E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll.lastcodeanalysissucceeded
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\Antlr3.Runtime.dll
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\DataAccess.dll
 E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\DataModel.dll
@@ -130,5 +132,3 @@ E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\System.Web.Http.Owin.xm
 E:\VSProjects\ProjectJediSolution\ProjectDataService\obj\Debug\ProjectDataService.csprojResolveAssemblyReference.cache
 E:\VSProjects\ProjectJediSolution\ProjectDataService\obj\Debug\ProjectDataService.dll
 E:\VSProjects\ProjectJediSolution\ProjectDataService\obj\Debug\ProjectDataService.pdb
-E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll.CodeAnalysisLog.xml
-E:\VSProjects\ProjectJediSolution\ProjectDataService\bin\ProjectDataService.dll.lastcodeanalysissucceeded

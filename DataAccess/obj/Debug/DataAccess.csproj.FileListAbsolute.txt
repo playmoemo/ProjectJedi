@@ -1,6 +1,8 @@
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll.config
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.pdb
+E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll.CodeAnalysisLog.xml
+E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll.lastcodeanalysissucceeded
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataModel.dll
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\EntityFramework.dll
 E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
@@ -10,5 +12,3 @@ E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\EntityFramework.SqlServer
 E:\VSProjects\ProjectJediSolution\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
 E:\VSProjects\ProjectJediSolution\DataAccess\obj\Debug\DataAccess.dll
 E:\VSProjects\ProjectJediSolution\DataAccess\obj\Debug\DataAccess.pdb
-E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll.CodeAnalysisLog.xml
-E:\VSProjects\ProjectJediSolution\DataAccess\bin\Debug\DataAccess.dll.lastcodeanalysissucceeded

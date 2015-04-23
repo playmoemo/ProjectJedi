@@ -1,5 +1,7 @@
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.pdb
+E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll.CodeAnalysisLog.xml
+E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll.lastcodeanalysissucceeded
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.pri
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\DataModel.dll
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\DataModel.pdb
@@ -17,5 +19,3 @@ E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\obj\Debug\pri.resfiles.i
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\obj\Debug\qualifiers.txt
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\obj\Debug\qualifiers.txt.intermediate
 E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\obj\Debug\MultipleQualifiersPerDimensionFound.txt
-E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll.CodeAnalysisLog.xml
-E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll.lastcodeanalysissucceeded

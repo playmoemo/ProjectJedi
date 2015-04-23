@@ -1,22 +1,23 @@
 
 - Et TimeSheet bør opprettes automatisk når en Student lager en Group, eller når en Student legges til en Group
 	* kan dette gjøres i GroupsController?
-	* eller må dette skje fra app ved å kalle "PostTimeSheet(...)" når "CreateGroup(....., Student s)" kalles i DataSource?
+	* eller må dette skje fra app ved å kalle "ProjectJediDataSource.PostTimeSheet(...)" når "CreateGroup(....., Student s)" kalles i DataSource?
 
+HUSK!: lage en BlancPage hvor data hentes fra DB, og som viser App-logo + ProgressRing/eller noe lignende
+	- ProgressRing
+	- Check Internet connection
+		- Alert user if no internet to avoid app-crash...
+			* "You have no Internet connection. The application will not function properly without a connection."
 
-! Må lage en ny tabell.
-	- Listen over TimeSheets blir logisk feil slik den er nå...
-	* Activity - tabell
-		Properties:
-		* ActivityId
-		* ActivityName
-		* 
-		- endringer i TimeSheet:
-			Properties:
-			* TimeSheetId
-			* StudentId
-			* GroupId
-	- HUSK! å legge til/endre controllere + muligens også slette DB/eller kun history-tabell
-	- 1. Lage async methods for alle CRUD operasjoner etter at DataModel er på plass med ny tabell(Activity)
+	- 1. Lage async methods for alle CRUD operasjoner 
+	- 2. Når man oppretter bruker:
+		- legge til skole
+			* schoolId kan brukes til å hente studenter som kan legges til i Group(se #3)
+	- 3. Når man henter Studentder
+		- bare hente de man er på gruppe sammen med
+			* 
 
 		
+Design:
+- Legge til Logo på DataLoadingPage.xaml
+- Lage custom Style for bakgrunner, margin, padding, font, etc.

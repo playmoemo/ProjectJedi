@@ -14,5 +14,7 @@
 
         <x:String x:Key="Task">Task 1</x:String>
         <x:String x:Key="Group">Group 1</x:String>
+
+        <x:String x:Key="LoadingMessage">Please wait, App is loading :)</x:String>
     </Application.Resources>
 </Application>
