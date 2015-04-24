@@ -30,7 +30,7 @@ namespace DataModel
         [StringLength(20)]
         public string UserName { get; set; }
 
-        // TODO: May add Email and phone!!!!!!!
+        // TODO: May add Email
 
         // Navigation Property
         //suppressed because of how Entity Framework operates

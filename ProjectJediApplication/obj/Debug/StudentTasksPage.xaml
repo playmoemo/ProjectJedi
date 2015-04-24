@@ -5,7 +5,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProjectJediApplication"
-    xmlns:data="using:ProjectJediDataSource"
+    xmlns:data="using:ProjectJediApplication.DataModel"
     xmlns:common="using:ProjectJediApplication.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -67,10 +67,6 @@
             ItemsSource="{Binding Source={StaticResource tasksViewSource}}"
             IsSwipeEnabled="False"
                                                             >
-            <!--
-            <TextBlock Text="Task 1" FontSize="30"/>
-            <TextBlock Text="Task 2" FontSize="30"/>
-            -->
             
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -127,8 +123,39 @@
                     <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SubheaderTextBlockStyle}"/>
                     <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding Deadline}" Style="{StaticResource SubtitleTextBlockStyle}"/>
                 </StackPanel>
-                <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}"/>
-                
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.Resources>
+
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{StaticResource TaskName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{StaticResource TaskDescription}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{StaticResource TaskDeadline}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{StaticResource TaskStatus}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+
+                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TimePicker Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+                    <!--Use Enum for TaskStatus (done/not done)-->
+                    <ComboBox x:Name="comboStudentTaskStatus" Grid.Row="3" Grid.Column="1"/>
+                    <!--
+                    <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
+                        <ListBox x:Name="listBoxStudentTasks"/>
+                    </ScrollViewer>
+                    -->
+                    <Button x:ConnectionId='2' x:Name="btnSaveGroupChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                  />
+                </Grid>
             </Grid>
         </ScrollViewer>
 

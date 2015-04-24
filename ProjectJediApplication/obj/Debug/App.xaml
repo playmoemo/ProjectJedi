@@ -5,17 +5,42 @@
     xmlns:local="using:ProjectJediApplication">
 
     <Application.Resources>
+        <!--Strings-->
         <x:String x:Key="AppName">Project Jedi</x:String>
         <x:String x:Key="Groups">Groups</x:String>
         <x:String x:Key="Students">Students</x:String>
         <x:String x:Key="StudentTasks">Tasks</x:String>
         <x:String x:Key="TimeSheets">Timesheets</x:String>
         <x:String x:Key="Progress">Progress</x:String>
-
+        <!--GroupsPage-->
+        <x:String x:Key="GroupName">Group Name:</x:String>
+        <x:String x:Key="GroupDescription">Description:</x:String>
+        <!--StudentsPage-->
+        <x:String x:Key="FirstName">First Name:</x:String>
+        <x:String x:Key="LastName">Last Name:</x:String>
+        <x:String x:Key="UserName">User Name:</x:String>
+        <!--StudentTasksPage-->
+        <x:String x:Key="TaskName">Task Name:</x:String>
+        <x:String x:Key="TaskDescription">Description:</x:String>
+        <x:String x:Key="TaskDeadline">Deadline:</x:String>
+        <x:String x:Key="TaskStatus">Status:</x:String>
+        <!--TimesheetsPage-->
+        
         <x:String x:Key="Task">Task 1</x:String>
         <x:String x:Key="Group">Group 1</x:String>
 
         <x:String x:Key="LoadingMessage">Please wait, App is loading :)</x:String>
+        
+        <!--Styles-->
+        <Style x:Key="SplitSelectedItemDetailsStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="SplitSelectedItemDetailsEdit" TargetType="TextBox">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
     </Application.Resources>
 </Application>
 

@@ -11,7 +11,9 @@ HUSK!: lage en BlancPage hvor data hentes fra DB, og som viser App-logo + Progre
 
 	- 1. Lage async methods for alle CRUD operasjoner 
 	- 2. Når man oppretter bruker:
-		- legge til skole
+		- lagre passord til AppData/autorisere innlogging fra AppData
+			- hvis bruker forblir pålogget, ikke autorisere(bypass log-in)
+		- [legge til skole] - hvis ting ikke funker når man skal linke Stuenter til Grupper
 			* schoolId kan brukes til å hente studenter som kan legges til i Group(se #3)
 	- 3. Når man henter Studentder
 		- bare hente de man er på gruppe sammen med

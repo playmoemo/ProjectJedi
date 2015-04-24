@@ -1,4 +1,5 @@
-﻿using ProjectJediApplication.Common;
+﻿using DataModel;
+using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -72,6 +73,13 @@ namespace ProjectJediApplication
             {
                 this.navigationHelper.GoBackCommand.RaiseCanExecuteChanged();
             }
+
+            //var group = (Group)this.itemListView.SelectedItem;
+            //foreach(var st in group.StudentTasks)
+            //{
+            //    listBoxStudentTasks.Items.Add(st.StudentTaskName);
+            //}
+            
         }
 
         /// <summary>
@@ -175,6 +183,13 @@ namespace ProjectJediApplication
             // to showing the selected item's details.  When the selection is cleared this has the
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
+
+            var group = (Group)this.itemListView.SelectedItem;
+            listBoxStudentTasks.Items.Clear();
+            foreach (var st in group.StudentTasks)
+            {
+                listBoxStudentTasks.Items.Add(st.StudentTaskName);
+            }
         }
 
         private bool CanGoBack()
@@ -253,5 +268,15 @@ namespace ProjectJediApplication
         }
 
         #endregion
+
+        private async void btnSaveGroupChanges_Click(object sender, RoutedEventArgs e)
+        {
+            var group = (Group)this.itemListView.SelectedItem;
+            var groupName = txtbGroupName.Text;
+            var groupDescription = txtbGroupDescription.Text;
+            var newGroup = new Group() { GroupId = group.GroupId, GroupName = groupName, Description = groupDescription, Students = group.Students, StudentTasks = group.StudentTasks};
+            // PUT...
+            await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(newGroup);
+        }
     }
 }

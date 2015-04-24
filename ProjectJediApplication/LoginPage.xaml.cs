@@ -49,7 +49,7 @@ namespace ProjectJediApplication
             this.navigationHelper.SaveState += navigationHelper_SaveState;
         }
 
-        private /*async*/ void btnSaveUserInformation_Click(object sender, RoutedEventArgs e)
+        private async void btnSaveUserInformation_Click(object sender, RoutedEventArgs e)
         {
             /*
              * 1: POST a student for the current user
@@ -78,7 +78,7 @@ namespace ProjectJediApplication
             };
 
             // save the user to DB
-            //await ProjectJediDataSource.ProjectJediDataSource.PostStudentAsyc(student);
+            await ProjectJediDataSource.ProjectJediDataSource.PostStudentAsyc(student);
 
             this.Frame.Navigate(typeof(MainPage));
         }

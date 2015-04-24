@@ -1,4 +1,5 @@
-﻿using ProjectJediApplication.Common;
+﻿using DataModel;
+using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -175,6 +176,7 @@ namespace ProjectJediApplication
             // to showing the selected item's details.  When the selection is cleared this has the
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
+
         }
 
         private bool CanGoBack()
@@ -253,5 +255,24 @@ namespace ProjectJediApplication
         }
 
         #endregion
+
+        private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)
+        {
+            Student student = (Student)this.itemListView.SelectedItem;
+
+            await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentAsync(student);
+
+            //IList<Student> studentList = new Student[1];
+            //studentList.Add(student);
+            //SelectionChangedEventArgs args = new SelectionChangedEventArgs(studentList);
+            ////this.itemListView_SelectionChanged(sender, new SelectionChangedEventArgs(IList<Student> removedItems));
+            //this.itemListView_SelectionChanged(student, studentList);
+           
+            // crappy dirty fix!!!!!!!!!!!!!!!!!!!!!!!
+            this.Frame.Navigate(typeof(StudentsPage));
+            Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+        }
+
+        // Allow to edit Student if it is the logged in user's Student object!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 }
