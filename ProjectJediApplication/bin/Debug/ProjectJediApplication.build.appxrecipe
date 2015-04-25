@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DEV-PC</Machine>
+    <WindowsUser>oyvind</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>56f667a3-a9a9-49a0-a59c-1b235cccc3ff</PackageIdentityName>
+    <IntermediateOutputPath>E:\VSProjects\ProjectJediSolution\ProjectJediApplication\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.exe">
+      <PackagePath>ProjectJediApplication.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\DataModel\bin\Debug\DataModel.dll">
+      <PackagePath>DataModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll">
+      <PackagePath>ProjectJediDataSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\Images\Logo.png">
+      <PackagePath>Assets\Images\Logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\profile.jpg">
+      <PackagePath>Assets\profile.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\DataLoadingPage.xbf">
+      <PackagePath>DataLoadingPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\GroupsPage.xbf">
+      <PackagePath>GroupsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\LoginPage.xbf">
+      <PackagePath>LoginPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProgressPage.xbf">
+      <PackagePath>ProgressPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentsPage.xbf">
+      <PackagePath>StudentsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentTasksPage.xbf">
+      <PackagePath>StudentTasksPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\TimeSheetsPage.xbf">
+      <PackagePath>TimeSheetsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.xr.xml">
+      <PackagePath>ProjectJediApplication.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

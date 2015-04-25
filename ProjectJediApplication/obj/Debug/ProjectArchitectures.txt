@@ -1,0 +1,4 @@
+E:\VSProjects\ProjectJediSolution\DataModel\DataModel.csproj;neutral
+E:\VSProjects\ProjectJediSolution\DataModel\DataModel.csproj;neutral
+E:\VSProjects\ProjectJediSolution\ProjectJediApplication\ProjectJediApplication.csproj;neutral
+E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\ProjectJediDataSource.csproj;neutral
