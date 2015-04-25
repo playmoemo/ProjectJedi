@@ -18,7 +18,6 @@
     <RootPropertyPathName Name="StudentTasks" />
     <RootPropertyPathName Name="StudentTaskName" />
     <RootPropertyPathName Name="Deadline" />
-    <RootPropertyPathName Name="StudentTaskId" />
     <RootPropertyPathName Name="TimeSheets" />
     <RootPropertyPathName Name="TimeSheetName" />
     <RootPropertyPathName Name="TimeSheetId" />
@@ -243,12 +242,17 @@
     <RootType FullName="ProjectJediApplication.MainPage" />
     <RootType FullName="ProjectJediApplication.ProgressPage" />
     <RootType FullName="ProjectJediApplication.StudentsPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="ProjectJediApplication.StudentTasksPage" />
     <RootType FullName="ProjectJediApplication.TimeSheetsPage" />

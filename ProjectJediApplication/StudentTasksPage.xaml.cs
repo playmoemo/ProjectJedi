@@ -78,8 +78,9 @@ namespace ProjectJediApplication
 
 
             var studentTask = (StudentTask)this.itemListView.SelectedItem;
-            // set DatePicker
-
+            // set DatePicker and TimePicker
+            datePickerDeadline.Date = studentTask.Deadline.Date;
+            timePickerDeadline.Time = studentTask.Deadline.TimeOfDay;
             // set ComboBox
             String[] status = TaskStatus.GetNames(typeof(TaskStatus));
             comboStudentTaskStatus.Items.Clear();
@@ -113,6 +114,10 @@ namespace ProjectJediApplication
 
             if (e.PageState == null)
             {
+                //this.itemListView.SelectedItem = null;
+                //this.itemListView.SelectedItem = (StudentTask)e.NavigationParameter;
+
+
                 // When this is a new page, select the first item automatically unless logical page
                 // navigation is being used (see the logical page navigation #region below.)
                 if (!this.UsingLogicalPageNavigation() && this.tasksViewSource.View != null)
@@ -131,6 +136,9 @@ namespace ProjectJediApplication
                 }
             }
         }
+
+
+
 
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
@@ -264,6 +272,10 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.itemListView.SelectedItem = null;
+            this.itemListView.SelectedItem = (StudentTask)e.Parameter;
+            //this.itemListView.SelectedItems.Add((StudentTask)e.Parameter);
+            //StudentTask studTask = (StudentTask)e.Parameter;
             navigationHelper.OnNavigatedTo(e);
         }
 

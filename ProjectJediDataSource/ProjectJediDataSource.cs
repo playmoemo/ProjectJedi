@@ -108,6 +108,25 @@ namespace ProjectJediDataSource
             }
         }
 
+
+        public static async Task PostGroupAsyc(Group group)
+        {
+            using (var client = setHttpClientSettings())
+            {
+
+                var jsonSerializer = new DataContractJsonSerializer(typeof(Group), jsonSerializerSettings);
+
+                var stream = new MemoryStream();
+                jsonSerializer.WriteObject(stream, group);
+                stream.Position = 0;
+
+                var content = new StringContent(new StreamReader(stream).ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("api/groups", content);
+
+                response.EnsureSuccessStatusCode();
+            }
+        }
+
         //===============================================STUDENT==========================================================
         public static async Task<ObservableCollection<Student>> GetStudentsAsync()
         {

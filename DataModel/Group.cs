@@ -23,6 +23,9 @@ namespace DataModel
         public string GroupName { get; set; }
         public string Description { get; set; }
 
+        //må legge til denne
+        // public int GroupLeader { get; set; } // StudentId of Student that creates Group....
+
         // Navigation Property
         //suppressed because of the way Entity Framework operates
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

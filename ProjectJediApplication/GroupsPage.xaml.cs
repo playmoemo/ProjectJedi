@@ -333,10 +333,13 @@ namespace ProjectJediApplication
             // POST Group...
         }
 
+
+
         private void listBoxStudentTasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // need StudentTaskId.....to navigate to StudentTasksPage
-            listBoxStudentTasks.SelectedItem.ToString();
+            StudentTask studentTask = (StudentTask)listBoxStudentTasks.SelectedItem;
+            this.Frame.Navigate(typeof(StudentTasksPage), studentTask);
         }
     }
 }

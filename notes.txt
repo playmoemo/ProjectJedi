@@ -9,13 +9,15 @@ HUSK!: lage en BlancPage hvor data hentes fra DB, og som viser App-logo + Progre
 		- Alert user if no internet to avoid app-crash...
 			* "You have no Internet connection. The application will not function properly without a connection."
 
+
+NÅR MAN OPPRETTER BRUKER, MÅ STUDENT_ID GJØRES TILGJENGELIG NÅR MAN NAVIGERER MELLOM PAGES. NÅR GROUP LAGES, MÅ STUDENT SOM LAGER GROUP BLI LEDER/ADMIN
 	- 1. Lage async methods for alle CRUD operasjoner 
 	- 2. Når man oppretter bruker:
 		- lagre passord til AppData/autorisere innlogging fra AppData
 			- hvis bruker forblir pålogget, ikke autorisere(bypass log-in)
 		- [legge til skole] - hvis ting ikke funker når man skal linke Stuenter til Grupper
 			* schoolId kan brukes til å hente studenter som kan legges til i Group(se #3)
-	- 3. Når man henter Studentder
+	- 3. Når man henter Studenter
 		- bare hente de man er på gruppe sammen med
 			* 
 

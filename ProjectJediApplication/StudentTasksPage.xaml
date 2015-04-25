@@ -93,7 +93,7 @@
                         
                         <StackPanel Grid.Column="1" Margin="10,0,0,0">
                             <TextBlock Text="{Binding StudentTaskName}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" MaxHeight="40"/>
-                            <TextBlock Text="{Binding StudentTaskId}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                            <TextBlock Text="{Binding Deadline}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                         </StackPanel>
                         
                     </Grid>
@@ -160,7 +160,11 @@
                     <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <!--Set the value from selectedItem-->
-                    <DatePicker x:Name="datePickerDeadline" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                        <DatePicker x:Name="datePickerDeadline" HorizontalAlignment="Center" Margin="0,5"/>
+                        <TimePicker x:Name="timePickerDeadline" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                    
                     
                     
                     <!--Use Enum for TaskStatus (done/in progress/not started)-->
