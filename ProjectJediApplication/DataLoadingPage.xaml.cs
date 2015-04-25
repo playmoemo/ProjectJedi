@@ -105,7 +105,7 @@ namespace ProjectJediApplication
             }
         }
 
-        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // Restore the previously saved state associated with this page
             if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))

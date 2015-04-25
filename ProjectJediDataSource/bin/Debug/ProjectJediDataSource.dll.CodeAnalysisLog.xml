@@ -12,50 +12,50 @@
          <Members>
           <Member Name="#GetGroupsAsync()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalError">Consider a design where 'ProjectJediDataSource.GetGroupsAsync()' doesn't nest generic type 'Task&lt;ObservableCollection&lt;Group&gt;&gt;'.</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Change 'ProjectJediDataSource.GetGroupsAsync()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetStudentsAsync()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalError">Consider a design where 'ProjectJediDataSource.GetStudentsAsync()' doesn't nest generic type 'Task&lt;ObservableCollection&lt;Student&gt;&gt;'.</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Change 'ProjectJediDataSource.GetStudentsAsync()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetStudentTasksAsync()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalError">Consider a design where 'ProjectJediDataSource.GetStudentTasksAsync()' doesn't nest generic type 'Task&lt;ObservableCollection&lt;StudentTask&gt;&gt;'.</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Change 'ProjectJediDataSource.GetStudentTasksAsync()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetTimeSheetsAsync()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheets' in member name 'ProjectJediDataSource.GetTimeSheetsAsync()' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheets' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
-            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="DoNotNestGenericTypesInMemberSignatures" Category="Microsoft.Design" CheckId="CA1006" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalError">Consider a design where 'ProjectJediDataSource.GetTimeSheetsAsync()' doesn't nest generic type 'Task&lt;ObservableCollection&lt;TimeSheet&gt;&gt;'.</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Change 'ProjectJediDataSource.GetTimeSheetsAsync()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PostStudentAsyc(DataModel.Student)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Asyc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2015-04-24 16:51:53Z" FixCategory="Breaking">
+            <Message Id="Asyc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2015-04-25 13:33:04Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Asyc' in member name 'ProjectJediDataSource.PostStudentAsyc(Student)' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>

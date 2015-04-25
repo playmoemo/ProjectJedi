@@ -1,4 +1,5 @@
-﻿using ProjectJediApplication.Common;
+﻿using DataModel;
+using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,8 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class StudentTasksPage : Page
     {
+        private enum TaskStatus { New, Active, Finished };
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -72,6 +75,23 @@ namespace ProjectJediApplication
             {
                 this.navigationHelper.GoBackCommand.RaiseCanExecuteChanged();
             }
+
+
+            var studentTask = (StudentTask)this.itemListView.SelectedItem;
+            // set DatePicker
+
+            // set ComboBox
+            String[] status = TaskStatus.GetNames(typeof(TaskStatus));
+            comboStudentTaskStatus.Items.Clear();
+            foreach(String s in status) 
+            {
+                comboStudentTaskStatus.Items.Add(s);
+            }
+
+            // loop throug status-array and match with objects status(0/1/2)
+            //comboStudentTaskStatus   (show Status based on int from StudentTask)
+            
+
         }
 
         /// <summary>
@@ -253,5 +273,68 @@ namespace ProjectJediApplication
         }
 
         #endregion
+
+        // Bottom AppBar buttons
+        private async void appBarDeleteTask_Click(object sender, RoutedEventArgs e)
+        {
+            StudentTask studentTask = (StudentTask)this.itemListView.SelectedItem;
+
+            await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentTaskAsync(studentTask);
+
+            //IList<Student> studentList = new Student[1];
+            //studentList.Add(student);
+            //SelectionChangedEventArgs args = new SelectionChangedEventArgs(studentList);
+            ////this.itemListView_SelectionChanged(sender, new SelectionChangedEventArgs(IList<Student> removedItems));
+            //this.itemListView_SelectionChanged(student, studentList);
+
+            // crappy dirty fix!!!!!!!!!!!!!!!!!!!!!!!
+            this.Frame.Navigate(typeof(StudentTasksPage));
+            Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+        }
+
+
+        // Top AppBar buttons
+        private void appBarNavHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentsPage));
+        }
+
+        private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TimeSheetsPage));
+        }
+
+        private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentTasksPage));
+        }
+
+        private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GroupsPage));
+        }
+
+
+
+        private void btnSaveTaskChanges_Click(object sender, RoutedEventArgs e)
+        {
+            //PUT...
+        }
+
+        private void btnCreateTask_Click(object sender, RoutedEventArgs e)
+        {
+            //Clear all fields
+            txtbGroupName.Text = "";
+            txtbGroupDescription.Text = "";
+            //datePickerDeadline.Date.Add();
+            //comboStudentTaskStatus.Items.Select();
+
+            //POST
+        }
     }
 }

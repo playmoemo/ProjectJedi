@@ -45,17 +45,28 @@ namespace ProjectDataService.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutGroup(int id, Group group)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             if (id != group.GroupId)
             {
                 return BadRequest();
             }
 
-            db.Entry(group).State = EntityState.Modified;
+            var oldGroup = db.Groups.Find(group.GroupId);
+
+            oldGroup.Students.Clear();
+            oldGroup.StudentTasks.Clear();
+            // loop through the collections and re-add objects
+
+            oldGroup.GroupName = group.GroupName;
+            oldGroup.Description = group.Description;
+            
+            
+
+            db.Entry(oldGroup).State = EntityState.Modified;
 
             try
             {

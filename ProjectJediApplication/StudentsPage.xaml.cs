@@ -256,8 +256,12 @@ namespace ProjectJediApplication
 
         #endregion
 
-        private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)
+
+        // Bottom AppBar buttons
+        private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)// send in parameters for logged in Student?
         {
+            //TODO: Student must be "Admin" to Delete other Students....!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             Student student = (Student)this.itemListView.SelectedItem;
 
             await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentAsync(student);
@@ -271,6 +275,32 @@ namespace ProjectJediApplication
             // crappy dirty fix!!!!!!!!!!!!!!!!!!!!!!!
             this.Frame.Navigate(typeof(StudentsPage));
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+        }
+
+        // Top AppBar buttons
+        private void appBarNavHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentsPage));
+        }
+
+        private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TimeSheetsPage));
+        }
+
+        private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentTasksPage));
+        }
+
+        private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GroupsPage));
         }
 
         // Allow to edit Student if it is the logged in user's Student object!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

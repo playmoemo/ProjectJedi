@@ -24,6 +24,19 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="appBarNavHome" Icon="Home" Label="Home" Click="appBarNavHome_Click"/>
+                <AppBarButton x:Name="appBarNavGroups" Icon="World" Label="Groups" Click="appBarNavGroups_Click"/>
+                <AppBarButton x:Name="appBarNavStudents" Icon="People" Label="Students" Click="appBarNavStudents_Click"/>
+                <AppBarButton x:Name="appBarNavTasks" Icon="Bookmarks" Label="Tasks" Click="appBarNavTasks_Click"/>
+                <AppBarButton x:Name="appBarNavTimeSheets" Icon="Clock" Label="TimeSheets" Click="appBarNavTimeSheets_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.TopAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -188,4 +201,13 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="appBarDeleteTimeSheet" Icon="Delete" Label="Delete Timesheet" Click="appBarDeleteTimeSheet_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>

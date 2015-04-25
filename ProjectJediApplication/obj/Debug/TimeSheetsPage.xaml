@@ -24,6 +24,19 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='1' x:Name="appBarNavHome" Icon="Home" Label="Home"                            />
+                <AppBarButton x:ConnectionId='2' x:Name="appBarNavGroups" Icon="World" Label="Groups"                              />
+                <AppBarButton x:ConnectionId='3' x:Name="appBarNavStudents" Icon="People" Label="Students"                                />
+                <AppBarButton x:ConnectionId='4' x:Name="appBarNavTasks" Icon="Bookmarks" Label="Tasks"                             />
+                <AppBarButton x:ConnectionId='5' x:Name="appBarNavTimeSheets" Icon="Clock" Label="TimeSheets"                                  />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.TopAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -56,7 +69,7 @@
         </Grid>
 
         <!-- Vertical scrolling item list -->
-        <ListView x:ConnectionId='1'
+        <ListView x:ConnectionId='6'
             x:Name="itemListView"
             AutomationProperties.AutomationId="ItemsListView"
             AutomationProperties.Name="Items"
@@ -188,5 +201,14 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='7' x:Name="appBarDeleteTimeSheet" Icon="Delete" Label="Delete Timesheet"                                    />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
 

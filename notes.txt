@@ -19,6 +19,10 @@ HUSK!: lage en BlancPage hvor data hentes fra DB, og som viser App-logo + Progre
 		- bare hente de man er på gruppe sammen med
 			* 
 
+	- 4. Når man legger Student til Group, bruke PUT["kopierer" Grop, og legge til den nye Student i Group.Students]
+
+I StudentTasks:
+- getGroupAsync(groupId) - trenger jeg Groups på StudentTaskPage for å kunne legge en Task til riktig Group?
 		
 Design:
 - Legge til Logo på DataLoadingPage.xaml

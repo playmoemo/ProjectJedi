@@ -24,6 +24,18 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="appBarNavHome" Icon="Home" Label="Home" Click="appBarNavHome_Click"/>
+                <AppBarButton x:Name="appBarNavGroups" Icon="World" Label="Groups" Click="appBarNavGroups_Click"/>
+                <AppBarButton x:Name="appBarNavStudents" Icon="People" Label="Students" Click="appBarNavStudents_Click"/>
+                <AppBarButton x:Name="appBarNavTasks" Icon="Bookmarks" Label="Tasks" Click="appBarNavTasks_Click"/>
+                <AppBarButton x:Name="appBarNavTimeSheets" Icon="Clock" Label="TimeSheets" Click="appBarNavTimeSheets_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.TopAppBar>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -147,15 +159,20 @@
 
                     <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
-                    <TimePicker Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
-                    <!--Use Enum for TaskStatus (done/not done)-->
-                    <ComboBox x:Name="comboStudentTaskStatus" Grid.Row="3" Grid.Column="1"/>
+                    <!--Set the value from selectedItem-->
+                    <DatePicker x:Name="datePickerDeadline" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+                    
+                    
+                    <!--Use Enum for TaskStatus (done/in progress/not started)-->
+                    <!--Start with 'not started' when new Task is Created-->
+                    <ComboBox x:Name="comboStudentTaskStatus" Grid.Row="3" Grid.Column="1" Visibility="Visible" Height="Auto"/>
                     <!--
                     <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
                         <ListBox x:Name="listBoxStudentTasks"/>
                     </ScrollViewer>
                     -->
-                    <Button x:Name="btnSaveGroupChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center" Click="btnSaveGroupChanges_Click"/>
+                    <Button x:Name="btnCreateTask" Grid.Row="4" Grid.Column="0" Content="Create Task" FontSize="20" HorizontalAlignment="Center" Click="btnCreateTask_Click"/>
+                    <Button x:Name="btnSaveTaskChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center" Click="btnSaveTaskChanges_Click"/>
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -216,4 +233,11 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="appBarDeleteTask" Icon="Delete" Label="Delete Student" Click="appBarDeleteTask_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

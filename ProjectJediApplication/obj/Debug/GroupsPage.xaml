@@ -26,6 +26,19 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='1' x:Name="appBarNavHome" Icon="Home" Label="Home"                            />
+                <AppBarButton x:ConnectionId='2' x:Name="appBarNavGroups" Icon="World" Label="Groups"                              />
+                <AppBarButton x:ConnectionId='3' x:Name="appBarNavStudents" Icon="People" Label="Students"                                />
+                <AppBarButton x:ConnectionId='4' x:Name="appBarNavTasks" Icon="Bookmarks" Label="Tasks"                             />
+                <AppBarButton x:ConnectionId='5' x:Name="appBarNavTimeSheets" Icon="Clock" Label="TimeSheets"                                  />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.TopAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -60,7 +73,7 @@
         </Grid>
 
         <!-- Vertical scrolling item list -->
-        <ListView x:ConnectionId='1'
+        <ListView x:ConnectionId='6'
             x:Name="itemListView"
             AutomationProperties.AutomationId="ItemsListView"
             AutomationProperties.Name="Items"
@@ -140,6 +153,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -149,13 +163,20 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource GroupName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource GroupDescription}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource StudentTasks}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource Students}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
 
                     <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding GroupName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <!--List of all StudentTasks linked to the selected Group-->
                     <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
-                        <ListBox x:Name="listBoxStudentTasks"/>
+                        <ListBox x:ConnectionId='9' x:Name="listBoxStudentTasks"                                                        />
                     </ScrollViewer>
-                    <Button x:ConnectionId='2' x:Name="btnSaveGroupChanges" Grid.Row="3" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                  />
+                    <!--List of all Students linked to the selected Group-->
+                    <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
+                        <ListBox x:Name="listBoxStudents"/>
+                    </ScrollViewer>
+                    <Button x:ConnectionId='7' x:Name="btnSaveGroupChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                  />
+                    <Button x:ConnectionId='8' x:Name="btnCreateGroup" Grid.Row="4" Grid.Column="0" Content="Create Group" FontSize="20" HorizontalAlignment="Center"                             />
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -216,5 +237,14 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='10' x:Name="appBarDeleteGroup" Icon="Delete" Label="Delete Group"                                />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
 

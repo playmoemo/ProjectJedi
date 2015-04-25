@@ -184,11 +184,23 @@ namespace ProjectJediApplication
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
 
+            // Populate ListBox with StudentTasks
             var group = (Group)this.itemListView.SelectedItem;
+            //var studentTasks = group.StudentTasks.ToList();
+
             listBoxStudentTasks.Items.Clear();
+            listBoxStudentTasks.DisplayMemberPath = "StudentTaskName";
             foreach (var st in group.StudentTasks)
             {
-                listBoxStudentTasks.Items.Add(st.StudentTaskName);
+                listBoxStudentTasks.Items.Add(st);
+            }
+
+            // Populate ListBox with Students
+            listBoxStudents.Items.Clear();
+            listBoxStudents.DisplayMemberPath = "UserName";
+            foreach (var s in group.Students)
+            {
+                listBoxStudents.Items.Add(s);
             }
         }
 
@@ -269,6 +281,33 @@ namespace ProjectJediApplication
 
         #endregion
 
+        // Top AppBar buttons
+        private void appBarNavHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentsPage));
+        }
+
+        private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TimeSheetsPage));
+        }
+
+        private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentTasksPage));
+        }
+
+        private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GroupsPage));
+        }
+
+        // PUT Group
         private async void btnSaveGroupChanges_Click(object sender, RoutedEventArgs e)
         {
             var group = (Group)this.itemListView.SelectedItem;
@@ -277,6 +316,27 @@ namespace ProjectJediApplication
             var newGroup = new Group() { GroupId = group.GroupId, GroupName = groupName, Description = groupDescription, Students = group.Students, StudentTasks = group.StudentTasks};
             // PUT...
             await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(newGroup);
+
+            this.Frame.Navigate(typeof(GroupsPage));
+            Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+        }
+
+        // Bottom AppBar buttons
+        private void appBarDeleteGroup_Click(object sender, RoutedEventArgs e)// send in parameters for logged in Student?
+        {
+            // Student must be "Admin" to delete or edit Group...
+            // ref. obliterateStudentAsync()....
+        }
+
+        private void btnCreateGroup_Click(object sender, RoutedEventArgs e)
+        {
+            // POST Group...
+        }
+
+        private void listBoxStudentTasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // need StudentTaskId.....to navigate to StudentTasksPage
+            listBoxStudentTasks.SelectedItem.ToString();
         }
     }
 }

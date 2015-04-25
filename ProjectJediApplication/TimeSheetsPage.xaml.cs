@@ -253,5 +253,38 @@ namespace ProjectJediApplication
         }
 
         #endregion
+
+        // Bottom AppBar buttons
+        private void appBarDeleteTimeSheet_Click(object sender, RoutedEventArgs e)// parameter to ID Student admin/group leader
+        {
+            // logged in Student must be "Admin" to Delete TimeSheets
+            // ref. ObliterateStudentAsync()...
+        }
+
+        // Top AppBar buttons
+        private void appBarNavHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentsPage));
+        }
+
+        private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TimeSheetsPage));
+        }
+
+        private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentTasksPage));
+        }
+
+        private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GroupsPage));
+        }
     }
 }
