@@ -39,8 +39,14 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
         <Style x:Key="SplitSelectedItemDetailsEdit" TargetType="TextBox">
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="CustomSubheaderTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,20,0,20"/>
         </Style>
     </Application.Resources>
 </Application>

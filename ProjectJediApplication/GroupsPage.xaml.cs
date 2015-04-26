@@ -370,10 +370,20 @@ namespace ProjectJediApplication
         }
         private void btnCreateGroup_Click(object sender, RoutedEventArgs e)
         {
-            // POST Group...
+            // clear input fields
+            txtbGroupName.Text = "";
+            txtbGroupDescription.Text = "";
+            listBoxStudentTasks.Items.Clear();
+            listBoxStudents.Items.Clear();
+
+            txtbGroupName.Focus(FocusState.Programmatic);
+
         }
 
-
+        private void btnSaveNewGroup_Click(object sender, RoutedEventArgs e)
+        {
+            // POST Group...
+        }
 
         private void listBoxStudentTasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -381,6 +391,8 @@ namespace ProjectJediApplication
             StudentTask studentTask = (StudentTask)listBoxStudentTasks.SelectedItem;
             this.Frame.Navigate(typeof(StudentTasksPage), studentTask);
         }
+
+        
 
     }
 }

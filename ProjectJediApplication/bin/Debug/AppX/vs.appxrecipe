@@ -20,21 +20,21 @@
     <AppXManifest Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-04-26T16:03:34.168</Modified>
+      <Modified>2015-04-26T16:26:14.784</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.exe">
       <PackagePath>ProjectJediApplication.exe</PackagePath>
-      <Modified>2015-04-26T16:13:59.494</Modified>
+      <Modified>2015-04-26T17:01:20.284</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\DataModel\bin\Debug\DataModel.dll">
       <PackagePath>DataModel.dll</PackagePath>
-      <Modified>2015-04-26T16:03:00.046</Modified>
+      <Modified>2015-04-26T16:25:45.049</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediDataSource\bin\Debug\ProjectJediDataSource.dll">
       <PackagePath>ProjectJediDataSource.dll</PackagePath>
-      <Modified>2015-04-26T16:03:10.747</Modified>
+      <Modified>2015-04-26T16:25:55.693</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\Assets\Images\Logo.png">
       <PackagePath>Assets\Images\Logo.png</PackagePath>
@@ -66,47 +66,47 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.916</Modified>
+      <Modified>2015-04-26T17:01:19.836</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\DataLoadingPage.xbf">
       <PackagePath>DataLoadingPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.917</Modified>
+      <Modified>2015-04-26T16:26:07.810</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\GroupsPage.xbf">
       <PackagePath>GroupsPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.917</Modified>
+      <Modified>2015-04-26T17:01:19.836</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\LoginPage.xbf">
       <PackagePath>LoginPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.917</Modified>
+      <Modified>2015-04-26T16:26:07.810</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.918</Modified>
+      <Modified>2015-04-26T16:26:07.810</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProgressPage.xbf">
       <PackagePath>ProgressPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.918</Modified>
+      <Modified>2015-04-26T16:26:07.810</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentsPage.xbf">
       <PackagePath>StudentsPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.918</Modified>
+      <Modified>2015-04-26T16:26:07.811</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\StudentTasksPage.xbf">
       <PackagePath>StudentTasksPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.918</Modified>
+      <Modified>2015-04-26T16:26:07.811</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\TimeSheetsPage.xbf">
       <PackagePath>TimeSheetsPage.xbf</PackagePath>
-      <Modified>2015-04-26T16:03:26.919</Modified>
+      <Modified>2015-04-26T16:26:07.811</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\ProjectJediApplication.xr.xml">
       <PackagePath>ProjectJediApplication.xr.xml</PackagePath>
-      <Modified>2015-04-26T15:22:57.643</Modified>
+      <Modified>2015-04-26T16:58:33.747</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSProjects\ProjectJediSolution\ProjectJediApplication\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-04-26T16:03:33.937</Modified>
+      <Modified>2015-04-26T16:26:14.553</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -137,11 +137,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
-                <Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1">
-                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding GroupName}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding GroupId}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+                <!--<Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>-->
+                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock x:Name="itemTitle" Text="{Binding GroupName}" Style="{StaticResource CustomSubheaderTextBlockStyle}"/>
                 </StackPanel>
 
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
@@ -149,11 +148,11 @@
                         
                     </Grid.Resources>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="90"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -165,18 +164,22 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource StudentTasks}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource Students}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
 
-                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding GroupName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding GroupName}" FontSize="20" Height="50"/>
                     <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <!--List of all StudentTasks linked to the selected Group-->
                     <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
-                        <ListBox x:ConnectionId='9' x:Name="listBoxStudentTasks"                                                        />
+                        <ListBox x:ConnectionId='10' x:Name="listBoxStudentTasks"                                                        />
                     </ScrollViewer>
                     <!--List of all Students linked to the selected Group-->
                     <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
                         <ListBox x:Name="listBoxStudents"/>
                     </ScrollViewer>
                     <Button x:ConnectionId='7' x:Name="btnSaveGroupChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                  />
-                    <Button x:ConnectionId='8' x:Name="btnCreateGroup" Grid.Row="4" Grid.Column="0" Content="Create Group" FontSize="20" HorizontalAlignment="Center"                             />
+                    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:ConnectionId='8' x:Name="btnCreateGroup" Content="Create Group" FontSize="20" HorizontalAlignment="Left"                             />
+                        <Button x:ConnectionId='9' x:Name="btnSaveNewGroup" Content="Save" FontSize="20" HorizontalAlignment="Right" Margin="30,0,0,0"                              />
+                    </StackPanel>
+                    
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -241,7 +244,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='10' x:Name="appBarDeleteGroup" Icon="Delete" Label="Delete Group"                                />
+                <AppBarButton x:ConnectionId='11' x:Name="appBarDeleteGroup" Icon="Delete" Label="Delete Group"                                />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

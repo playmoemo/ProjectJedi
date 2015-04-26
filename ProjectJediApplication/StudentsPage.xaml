@@ -132,18 +132,18 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
-                <Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                
                 <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1">
-                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding UserName}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding FirstName}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding UserName}" Style="{StaticResource CustomSubheaderTextBlockStyle}"/>
                 </StackPanel>
                 
                 <!--THIS AREA WILL ONLY BE ALLOWED TO EDIT IF USER IS THE LOGGED IN STUDENT-->
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
