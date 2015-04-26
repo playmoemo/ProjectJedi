@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,6 +28,8 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class GroupsPage : Page
     {
+        private Student admin;
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -271,6 +274,7 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            admin = (Student)e.Parameter;
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -322,12 +326,48 @@ namespace ProjectJediApplication
         }
 
         // Bottom AppBar buttons
-        private void appBarDeleteGroup_Click(object sender, RoutedEventArgs e)// send in parameters for logged in Student?
+        private async void appBarDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
             // Student must be "Admin" to delete or edit Group...
-            // ref. obliterateStudentAsync()....
+            var group = (Group)itemListView.SelectedItem;
+
+            if (group.GroupLeader == admin.StudentId)
+            {
+                //can delete
+                MessageDialog notAuthorizedDialog = new MessageDialog("You will now delete the group.");
+                await notAuthorizedDialog.ShowAsync();
+                // Delete as in ObliterateStudentAsync()......
+            }
+            else
+            {
+                MessageDialog notAuthorizedDialog = new MessageDialog("You are not authorized to delete a group.");
+                await notAuthorizedDialog.ShowAsync();
+            }
+
+            //List<Group> groupsList = admin.Groups.ToList();
+            //foreach (var g in groupsList)
+            //{
+            //    if (g.GroupLeader == admin.StudentId)
+            //    {
+            //        //can delete
+            //        MessageDialog notAuthorizedDialog = new MessageDialog("You will now delete the group.");
+            //        await notAuthorizedDialog.ShowAsync();
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        MessageDialog notAuthorizedDialog = new MessageDialog("You are not authorized to delete a group.");
+            //        await notAuthorizedDialog.ShowAsync();
+            //    }
+            //}
+            
+            
         }
 
+        private void CommandInvokedHandler(IUICommand command)
+        {
+            
+        }
         private void btnCreateGroup_Click(object sender, RoutedEventArgs e)
         {
             // POST Group...
@@ -341,5 +381,6 @@ namespace ProjectJediApplication
             StudentTask studentTask = (StudentTask)listBoxStudentTasks.SelectedItem;
             this.Frame.Navigate(typeof(StudentTasksPage), studentTask);
         }
+
     }
 }

@@ -2,12 +2,15 @@
 using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -57,30 +60,99 @@ namespace ProjectJediApplication
              *      - check boolean value when app loads(DataLoadingPage.xaml.cs)[loadstate???]
              *      - Test roamingSettings hvis ikke current løsning funker!
              */
-            //ApplicationDataContainer roamingSettings = ApplicationData.Current.RoamingSettings;
-            
+            //Input validation
+            string password = null;
+            if (txtbFirstName.Text.Length != 0 || txtbLastName.Text.Length != 0 || txtbUserName.Text.Length != 0)
+            {
+                if (passwordPassword.Password.Equals(passwordConfirmPassword.Password))
+                {
+                    password = passwordPassword.Password;
+                    createNewUser(password);
+                }
+                else
+                {
+                    // Errordialog
+                    MessageDialog passDialog = new MessageDialog("Passwords don't match. Try again.");
+                    await passDialog.ShowAsync();
+                }
+                
+            }
+            else
+            {
+                MessageDialog requiredDialog = new MessageDialog("You are missing some required fields. Try again.");
+                await requiredDialog.ShowAsync();
+            }
+        }
 
-            //if (checkNotRemainLoggedIn.IsChecked.Equals(true))
-            //{
-            //    isLoggedIn = false;
-            //}
-            //else
-            //{
-            //    isLoggedIn = true;
-            //}
-            //roamingSettings.Values["automaticLogin"] = isLoggedIn;
-
-            Student student = new Student() 
-            { 
+        private async void createNewUser(string password)
+        {
+            Student student = new Student()
+            {
                 FirstName = txtbFirstName.Text,
                 LastName = txtbLastName.Text,
-                UserName = txtbUserName.Text
+                UserName = txtbUserName.Text,
+                Email = txtbEmail.Text,
+                Password = password
             };
 
             // save the user to DB
+            // return the created Student and pass it to Navigate as parameter
             await ProjectJediDataSource.ProjectJediDataSource.PostStudentAsyc(student);
 
-            this.Frame.Navigate(typeof(MainPage));
+            var students = await ProjectJediDataSource.ProjectJediDataSource.GetStudentsAsync();
+            foreach (var s in students)
+            {
+                if (s.UserName.Equals(student.UserName))
+                {
+                    // hvorfor kommer denne når jeg lager ny bruker?
+                    MessageDialog userExistsDialog = new MessageDialog("Your user is created. You will be automatically logged in now.");
+                    await userExistsDialog.ShowAsync();
+
+                    this.Frame.Navigate(typeof(MainPage), s);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            //Check if user exists in DB
+            string uName = txtbUserNameLogin.Text;
+            string pass = passwordLogin.Password;
+
+            ObservableCollection<Student> studentsFromDB = await ProjectJediDataSource.ProjectJediDataSource.GetStudentsAsync();
+            List<Student> studentList = studentsFromDB.ToList<Student>();
+            if (studentsFromDB.Count == 0)
+            {
+                MessageDialog createUserDialog = new MessageDialog("You need to create a user before you log in.");
+                await createUserDialog.ShowAsync();
+
+                txtbUserName.Text = txtbUserNameLogin.Text;
+                txtbUserNameLogin.Text = "";
+                passwordLogin.Password = "";
+            }
+            foreach (var s in studentsFromDB)
+            {
+                if (s.UserName.Equals(uName) && s.Password.Equals(pass))
+                {
+                    ProjectJediDataSource.ProjectJediDataSource.setAdmin(s);
+                    ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+                    this.Frame.Navigate(typeof(MainPage), s);
+                    break;
+                }
+                else
+                {
+                    MessageDialog userMissingDialog = new MessageDialog("Username or Password was incorrect.");
+                    await userMissingDialog.ShowAsync();
+
+                    txtbUserNameLogin.Text = "";
+                    passwordLogin.Password = "";
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -93,16 +165,15 @@ namespace ProjectJediApplication
         /// serializable state.</param>
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-            if (checkNotRemainLoggedIn.IsChecked.Equals(true))
-            {
-                isLoggedIn = false;
-            }
-            else
-            {
-                isLoggedIn = true;
-            }
-
-            e.PageState["automaticLogin"] = isLoggedIn;
+           
         }
+
+
+        private void OnSuspending(object sender, SuspendingEventArgs e)
+        {
+            //TODO: Save application state and stop any background activity
+        }
+
+        
     }
 }

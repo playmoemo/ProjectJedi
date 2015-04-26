@@ -1,6 +1,8 @@
-﻿using ProjectJediApplication.Common;
+﻿using DataModel;
+using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,6 +25,8 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Student admin;
+
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         /// <summary>
@@ -34,33 +38,61 @@ namespace ProjectJediApplication
         }
         public MainPage()
         {
-            this.InitializeComponent();   
+            this.InitializeComponent();
+            
+        }
+
+        private void populateCriticalTasksListBox()
+        {
+            listBoxNotifications.Items.Clear();
+            listBoxNotifications.DisplayMemberPath = "StudentTaskName";
+            foreach (var st in admin.StudentTasks)
+            {
+                listBoxNotifications.Items.Add(st);
+            }
+            
         }
 
         private void BtnGroups_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GroupsPage));
+            this.Frame.Navigate(typeof(GroupsPage), admin);
         }
 
         private void BtnStudents_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentsPage));
+            this.Frame.Navigate(typeof(StudentsPage), admin);
         }
 
 
         private void BtnStudentTasks_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentTasksPage));
+            this.Frame.Navigate(typeof(StudentTasksPage), admin);
         }
 
         private void BtnProgress_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ProgressPage));
+            this.Frame.Navigate(typeof(ProgressPage), admin);
         }
 
         private void BtnTimeSheets_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TimeSheetsPage));
+            this.Frame.Navigate(typeof(TimeSheetsPage), admin);
+        }
+
+
+        private void hyperChangePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            // filepicker - MyPictures
+        }
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            admin = (Student)e.Parameter;
+
+            txtUserNameMainPage.Text = admin.UserName;
+
+            populateCriticalTasksListBox();
         }
     }
 }

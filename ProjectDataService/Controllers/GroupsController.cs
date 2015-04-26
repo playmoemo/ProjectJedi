@@ -63,8 +63,8 @@ namespace ProjectDataService.Controllers
 
             oldGroup.GroupName = group.GroupName;
             oldGroup.Description = group.Description;
-            
-            
+
+
 
             db.Entry(oldGroup).State = EntityState.Modified;
 

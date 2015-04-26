@@ -150,13 +150,15 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource FirstName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource LastName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource UserName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{StaticResource FirstName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{StaticResource LastName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{StaticResource UserName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{StaticResource Email}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
 
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding FirstName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding LastName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox Grid.Row="2" Grid.Column="1" Margin="0,20,0,0" Text="{Binding UserName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Email}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                 </Grid>
                 
                 

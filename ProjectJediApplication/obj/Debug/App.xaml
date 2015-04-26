@@ -19,6 +19,7 @@
         <x:String x:Key="FirstName">First Name:</x:String>
         <x:String x:Key="LastName">Last Name:</x:String>
         <x:String x:Key="UserName">User Name:</x:String>
+        <x:String x:Key="Email">Email:</x:String>
         <!--StudentTasksPage-->
         <x:String x:Key="TaskName">Task Name:</x:String>
         <x:String x:Key="TaskDescription">Description:</x:String>

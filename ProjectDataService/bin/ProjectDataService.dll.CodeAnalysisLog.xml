@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#GetActivities()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectDataService\Controllers" File="ActivitiesController.cs" Line="23">Change 'ActivitiesController.GetActivities()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
@@ -21,51 +21,51 @@
         </Type>
         <Type Name="TimeSheetsController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+          <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
            <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheets' in type name 'TimeSheetsController' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheets'.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#DeleteTimeSheet(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'TimeSheetsController.DeleteTimeSheet(int)' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetTimeSheet(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'TimeSheetsController.GetTimeSheet(int)' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetTimeSheets()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="TimeSheets" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="e:\VSProjects\ProjectJediSolution\ProjectDataService\Controllers" File="TimeSheetsController.cs" Line="23">The compound word 'TimeSheets' in member name 'TimeSheetsController.GetTimeSheets()' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheets' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectDataService\Controllers" File="TimeSheetsController.cs" Line="23">Change 'TimeSheetsController.GetTimeSheets()' to a property if appropriate.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PostTimeSheet(DataModel.TimeSheet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'TimeSheetsController.PostTimeSheet(TimeSheet)' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
-            <Message Id="timeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="timeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberParameterShouldBeDiscreteTerm" Certainty="80" Level="Error">In member 'TimeSheetsController.PostTimeSheet(TimeSheet)', the compound word 'timeSheet' in parameter name 'timeSheet' exists as a discrete term. If your usage is intended to be single word, case it as 'timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PutTimeSheet(System.Int32,DataModel.TimeSheet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'TimeSheetsController.PutTimeSheet(int, TimeSheet)' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
-            <Message Id="timeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-25 15:59:07Z" FixCategory="Breaking">
+            <Message Id="timeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:03:13Z" FixCategory="Breaking">
              <Issue Name="MemberParameterShouldBeDiscreteTerm" Certainty="80" Level="Error">In member 'TimeSheetsController.PutTimeSheet(int, TimeSheet)', the compound word 'timeSheet' in parameter name 'timeSheet' exists as a discrete term. If your usage is intended to be single word, case it as 'timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>

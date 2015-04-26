@@ -8,18 +8,72 @@
      <Namespaces>
       <Namespace Name="ProjectJediApplication">
        <Types>
+        <Type Name="GroupsPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CommandInvokedHandler(Windows.UI.Popups.IUICommand)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="GroupsPage.xaml.cs" Line="367">The 'this' parameter (or 'Me' in Visual Basic) of 'GroupsPage.CommandInvokedHandler(IUICommand)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="command" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="GroupsPage.xaml.cs" Line="367">Parameter 'command' of 'GroupsPage.CommandInvokedHandler(IUICommand)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="GroupsPage.xaml.cs" Line="277">In externally visible method 'GroupsPage.OnNavigatedTo(NavigationEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
         <Type Name="LoginPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="Login" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2015-04-25 15:59:22Z" FixCategory="Breaking">
+          <Message Id="Login" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Replace the term 'Login' in type name 'LoginPage' with the preferred alternate 'LogOn'.</Issue>
           </Message>
          </Messages>
+         <Members>
+          <Member Name="#isLoggedIn" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'LoginPage.isLoggedIn' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="LoginPage.xaml.cs" Line="173">The 'this' parameter (or 'Me' in Visual Basic) of 'LoginPage.OnSuspending(object, SuspendingEventArgs)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="e" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="LoginPage.xaml.cs" Line="173">Parameter 'e' of 'LoginPage.OnSuspending(object, SuspendingEventArgs)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+            <Message Id="sender" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="LoginPage.xaml.cs" Line="173">Parameter 'sender' of 'LoginPage.OnSuspending(object, SuspendingEventArgs)' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="MainPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="MainPage.xaml.cs" Line="91">In externally visible method 'MainPage.OnNavigatedTo(NavigationEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
         </Type>
         <Type Name="StudentTasksPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Members>
           <Member Name="#OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
            <Messages>
-            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-04-25 15:59:22Z" FixCategory="DependsOnFix">
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication" File="StudentTasksPage.xaml.cs" Line="276">In externally visible method 'StudentTasksPage.OnNavigatedTo(NavigationEventArgs)', validate parameter 'e' before using it.</Issue>
             </Message>
            </Messages>
@@ -34,7 +88,7 @@
          <Members>
           <Member Name="#Activities" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-25 15:59:22Z" FixCategory="NonBreaking">
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-04-26 16:14:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Warning" Path="e:\VSProjects\ProjectJediSolution\ProjectJediApplication\DataModel" File="SampleDataSource.cs" Line="42">The 'this' parameter (or 'Me' in Visual Basic) of 'SampleDataSource.Activities' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
             </Message>
            </Messages>
@@ -49,6 +103,16 @@
   </Target>
  </Targets>
  <Rules>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Avoid unused private fields</Name>
+   <Description>Private fields were detected that do not appear to be accessed within the assembly. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245042.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="12.0.0.0" />
+  </Rule>
   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
    <Name>Mark members as static</Name>
    <Description>Methods which do not access instance data or call instance methods can be marked as static (Shared in Visual Basic). After doing so, the compiler will emit non-virtual call sites to these members which will prevent a check at runtime for each call that ensures the current object pointer is non-null. This can result in a measurable performance gain for performance-sensitive code. In some cases, the failure to access the current object instance represents a correctness issue.</Description>
@@ -58,6 +122,16 @@
    <Email>[none]</Email>
    <MessageLevel Certainty="95">Warning</MessageLevel>
    <File Name="performancerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+   <Name>Review unused parameters</Name>
+   <Description>Review parameters in non-virtual methods that are not used in the method body to ensure no correctness exists around failure to access them. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182268.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
   </Rule>
   <Rule TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726">
    <Name>Use preferred terms</Name>

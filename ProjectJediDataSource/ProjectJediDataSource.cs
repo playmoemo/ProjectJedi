@@ -21,6 +21,7 @@ namespace ProjectJediDataSource
         private static ProjectJediDataSource projectJediDataSource = new ProjectJediDataSource();
         private const string dateTimeFormat = "yyyy-MM-ddTHH:mm:ss";
         private const string RestServiceUrl = "http://localhost:22618/";
+        private static Student admin;
 
         private ProjectJediDataSource()
         {
@@ -30,6 +31,8 @@ namespace ProjectJediDataSource
             //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             jsonSerializerSettings = new DataContractJsonSerializerSettings { DateTimeFormat = new DateTimeFormat(dateTimeFormat) };
+
+            //populateLocalResources();
         }
 
         private ObservableCollection<Group> groups = new ObservableCollection<Group>();
@@ -53,7 +56,14 @@ namespace ProjectJediDataSource
        /*Lage forskjellige versjoner av disse metodene utifra hva som skal
         * vises på siden(f.eks i Notification area, hente StudentTasks på deadline)
         */
-       
+
+
+        public static void setAdmin(Student student)
+        {
+            ProjectJediDataSource.admin = student;
+
+        }
+
 
         private static HttpClient setHttpClientSettings()
         {
@@ -64,6 +74,29 @@ namespace ProjectJediDataSource
 
             return client;
         }
+
+        // TODO: implement this method!
+        public static async void populateLocalResources()
+        {
+            ProjectJediDataSource.projectJediDataSource.groups = await ProjectJediDataSource.GetGroupsAsync();
+            ProjectJediDataSource.projectJediDataSource.students = await ProjectJediDataSource.GetStudentsAsync();
+            ProjectJediDataSource.projectJediDataSource.studentTasks = await ProjectJediDataSource.GetStudentTasksAsync();
+            ProjectJediDataSource.projectJediDataSource.timeSheets = await ProjectJediDataSource.GetTimeSheetsAsync();
+            //this.activities = await ProjectJediDataSource.getActivitiesAsync();
+
+
+            // populate this.criticalTasks based on StudentTask Deadline Decending
+            foreach (var st in ProjectJediDataSource.projectJediDataSource.studentTasks)
+	        {
+                if (st.StudentId == admin.StudentId)
+                {
+                    ProjectJediDataSource.projectJediDataSource.criticalTasks.Add(st);
+                }
+                
+	        }
+            
+        }
+
         //======================================GROUP=========================================================================
         public static async Task<ObservableCollection<Group>> GetGroupsAsync()
         {
@@ -273,5 +306,6 @@ namespace ProjectJediDataSource
         }
         //Todo: create methods for all the other stuff I need...
 
+        
     }
 }

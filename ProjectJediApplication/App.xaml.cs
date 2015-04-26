@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,6 +25,7 @@ namespace ProjectJediApplication
     /// </summary>
     sealed partial class App : Application
     {
+        Boolean isLoggedIn;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -40,7 +42,7 @@ namespace ProjectJediApplication
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        protected async override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -68,7 +70,30 @@ namespace ProjectJediApplication
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
-                    await ProjectJediApplication.Common.SuspensionManager.RestoreAsync();
+                    //await ProjectJediApplication.Common.SuspensionManager.RestoreAsync();
+                    if (ApplicationData.Current.LocalSettings.Values.ContainsKey("isRemainingLoggedIn"))
+                    {
+
+                        isLoggedIn = (Boolean)ApplicationData.Current.LocalSettings.Values["isRemainingLoggedIn"];
+                    }
+                    else
+                    {
+                        // if "isRemainingLoggedIn" doesn't exist
+                        isLoggedIn = true;
+                    }
+                }
+                else
+                {
+                    if (ApplicationData.Current.LocalSettings.Values["isRemainingLoggedIn"] == null)
+                    {
+                        isLoggedIn = true;
+                    }
+                    else
+                    {
+                        isLoggedIn = (Boolean)ApplicationData.Current.LocalSettings.Values["isRemainingLoggedIn"];
+                    }
+
+                    
                 }
 
                 // Place the frame in the current Window
@@ -81,7 +106,7 @@ namespace ProjectJediApplication
                 // configuring the new page by passing required information as a navigation
                 // parameter
 
-                rootFrame.Navigate(typeof(DataLoadingPage), e.Arguments);
+                rootFrame.Navigate(typeof(DataLoadingPage), /*e.Arguments*/isLoggedIn);
                 //if (!rootFrame.Navigate(typeof(DataLoadingPage), e.Arguments))
                 //{
                 //    throw new Exception("Failed to create initial page");
@@ -110,12 +135,15 @@ namespace ProjectJediApplication
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private async void OnSuspending(object sender, SuspendingEventArgs e)
+        private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
+            //var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
-            await ProjectJediApplication.Common.SuspensionManager.SaveAsync();
-            deferral.Complete();
+            //await ProjectJediApplication.Common.SuspensionManager.SaveAsync();
+            //deferral.Complete();
+
+            //Boolean isRemainingLoggedIn = true;
+            //ApplicationData.Current.LocalSettings.Values["isRemainingLoggedIn"] = isRemainingLoggedIn;
         }
     }
 }

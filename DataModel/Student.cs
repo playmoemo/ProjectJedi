@@ -25,12 +25,13 @@ namespace DataModel
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(20)]
         public string UserName { get; set; }
 
-        // TODO: May add Email
+        public string Password { get; set; }
 
         // Navigation Property
         //suppressed because of how Entity Framework operates

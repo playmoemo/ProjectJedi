@@ -25,8 +25,6 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class DataLoadingPage : Page
     {
-        private Boolean willLoadLogin = true;
-
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         public ObservableDictionary DefaultViewModel
@@ -51,9 +49,8 @@ namespace ProjectJediApplication
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
 
-            activateDataLoading();
+            //activateDataLoading();
             
-            // retrieve state of "automaticLogin", and load/not load log-in page
         }
 
         private async void activateDataLoading()
@@ -68,14 +65,11 @@ namespace ProjectJediApplication
                 progressLoadingData.IsActive = false;
                 progressLoadingData.Visibility = Visibility.Collapsed;
                 
-                if (willLoadLogin)
-                {
-                    this.Frame.Navigate(typeof(LoginPage));
-                }
-                else
-                {
-                    this.Frame.Navigate(typeof(MainPage));
-                }
+                // test if username + password exists in DB
+                this.Frame.Navigate(typeof(LoginPage));
+                   
+                //when log-in match 
+                //this.Frame.Navigate(typeof(MainPage));
                 
             }
             else
@@ -105,14 +99,35 @@ namespace ProjectJediApplication
             }
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //if (e.Parameter == null)
+            //{
+            //    willLoadLogin = true;
+            //}
+            //else
+            //{
+            //    willLoadLogin = (Boolean)e.Parameter;
+            //}
+            
+            activateDataLoading();
+            navigationHelper.OnNavigatedTo(e);
+        }
+
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // Restore the previously saved state associated with this page
             if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))
             {
                 //ApplicationDataContainer roamingSettings = ApplicationData.Current.RoamingSettings;
-                willLoadLogin = (Boolean)e.PageState["automaticLogin"];
+                
+                //willLoadLogin = (Boolean)e.PageState["automaticLogin"];
             }
+
+            //willLoadLogin = (Boolean)e.NavigationParameter;
+            //activateDataLoading();
+
+
             //if (e.PageState == null)
             //{
                 

@@ -6,6 +6,7 @@
             "FirstName": "Oyvind",
             "LastName": "Trinborg",
             "UserName": "oyvindt",
+            "Email":  "playmoemo@hotmail.com",
             "Groups": [
                 {
                     "GroupId": 5,
@@ -76,6 +77,7 @@
             "FirstName": "Isabel",
             "LastName": "Vestli",
             "UserName": "isabellev",
+            "Email":  "isabel@gmail.com",
             "Groups": [ ],
             "StudentTasks": [
                 {
@@ -128,6 +130,7 @@
             "FirstName": "Kristin",
             "LastName": "Kveine",
             "UserName": "kristikv",
+            "Email":  "kristin@gmail.com",
             "Groups": [ ],
             "StudentTasks": [
                 {
@@ -171,6 +174,7 @@
                     "FirstName": "Oyvind",
                     "LastName": "Trinborg",
                     "UserName": "oyvindt",
+                    "Email":  "playmoemo@hotmail.com",
                     "Groups": [ ],
                     "StudentTasks": [
                         {
@@ -190,6 +194,7 @@
                     "FirstName": "Isabel",
                     "LastName": "Vestli",
                     "UserName": "isabellev",
+                    "Email": "isabel@gmail.com",
                     "Groups": [ ],
                     "StudentTasks": [
                         {
@@ -245,6 +250,7 @@
                     "FirstName": "Oyvind",
                     "LastName": "Trinborg",
                     "UserName": "oyvindt",
+                    "Email": "playmoemo@hotmail.com",
                     "Groups": [ ],
                     "StudentTasks": [
                         {
@@ -264,6 +270,7 @@
                     "FirstName": "Isabel",
                     "LastName": "Vestli",
                     "UserName": "isabellev",
+                    "Email": "isabel@gmail.com",
                     "Groups": [ ],
                     "StudentTasks": [
                         {
@@ -283,6 +290,7 @@
                     "FirstName": "Kristin",
                     "LastName": "Kveine",
                     "UserName": "kristikv",
+                    "Email": "kristin@gmail.com",
                     "Groups": [ ],
                     "StudentTasks": [
                         {
