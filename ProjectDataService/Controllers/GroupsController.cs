@@ -59,12 +59,9 @@ namespace ProjectDataService.Controllers
 
             oldGroup.Students.Clear();
             oldGroup.StudentTasks.Clear();
-            // loop through the collections and re-add objects
 
             oldGroup.GroupName = group.GroupName;
             oldGroup.Description = group.Description;
-
-
 
             db.Entry(oldGroup).State = EntityState.Modified;
 
@@ -93,8 +90,6 @@ namespace ProjectDataService.Controllers
         // Add the Student that creates the Group as second parameter?
         public async Task<IHttpActionResult> PostGroup(Group group)
         {
-            // Fix - resolve Students
-            // Hack to resolve Students (rather than creating new Students)
             var students = group.Students.ToList<Student>();
             group.Students.Clear();
 
@@ -103,16 +98,11 @@ namespace ProjectDataService.Controllers
             //    return BadRequest(ModelState);
             //}
 
-            // loop through students to check if exists
             foreach (var s in students)
             {
                 Student student = await db.Students.FindAsync(s.StudentId);
                 group.Students.Add(student);
             }
-
-            // can I add a new TimeSheet() here? How do I find the right Student?
-            //TimeSheet ts = new TimeSheet();
-
 
             db.Groups.Add(group);
             await db.SaveChangesAsync();

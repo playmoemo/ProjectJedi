@@ -125,6 +125,7 @@
     <Compile Include="DataLoadingPage.xaml.cs">
       <DependentUpon>DataLoadingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\ParameterArguments.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GroupsPage.xaml.cs">

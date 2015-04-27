@@ -1,7 +1,7 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="e:\vsprojects\projectjedisolution\projectjediapplication\obj\debug\intermediatexaml\projectjediapplication.exe" HashGuid="6806c31d-a91f-f624-5cb9-48b95e5ccb8a" />
+    <LocalAssembly PathName="e:\vsprojects\projectjedisolution\projectjediapplication\obj\debug\intermediatexaml\projectjediapplication.exe" HashGuid="7f8a834e-7607-e2da-3589-2ea2e209e6bb" />
     <ReferenceAssembly PathName="e:\vsprojects\projectjedisolution\datamodel\bin\debug\datamodel.dll" HashGuid="6bb7c6b9-c578-1145-27c4-b5a82eca721e" />
-    <ReferenceAssembly PathName="e:\vsprojects\projectjedisolution\projectjedidatasource\bin\debug\projectjedidatasource.dll" HashGuid="33f4b3ff-6fd8-12cc-350c-44204f201879" />
+    <ReferenceAssembly PathName="e:\vsprojects\projectjedisolution\projectjedidatasource\bin\debug\projectjedidatasource.dll" HashGuid="381ad577-8010-3cef-5af2-50b2fd190f08" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using ProjectJediApplication.Common;
+using ProjectJediApplication.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,6 +29,7 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class LoginPage : Page
     {
+        private ParameterArguments arguments;
         private NavigationHelper navigationHelper;
 
         /// <summary>
@@ -108,7 +110,8 @@ namespace ProjectJediApplication
                     MessageDialog userExistsDialog = new MessageDialog("Your user is created. You will be automatically logged in now.");
                     await userExistsDialog.ShowAsync();
 
-                    this.Frame.Navigate(typeof(MainPage), s);
+                    arguments = new ParameterArguments() { Administrator = s};
+                    this.Frame.Navigate(typeof(MainPage), arguments);
                 }
                 else
                 {
@@ -140,7 +143,9 @@ namespace ProjectJediApplication
                 {
                     ProjectJediDataSource.ProjectJediDataSource.setAdmin(s);
                     ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
-                    this.Frame.Navigate(typeof(MainPage), s);
+
+                    arguments = new ParameterArguments() { Administrator = s};
+                    this.Frame.Navigate(typeof(MainPage), arguments);
                     break;
                 }
                 else

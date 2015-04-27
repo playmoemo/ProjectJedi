@@ -150,36 +150,55 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="120"/>
-                        <RowDefinition Height="100"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource GroupName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource GroupDescription}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource StudentTasks}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" Text="{StaticResource Students}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{StaticResource GroupName}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{StaticResource GroupDescription}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{StaticResource GroupLeader}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{StaticResource StudentTasks}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{StaticResource Students}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Add a student:" Style="{StaticResource SplitSelectedItemDetailsStyle}" Margin="0,20,0,0"/>
 
-                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding GroupName}" FontSize="20" Height="50"/>
-                    <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,0,0,20" Text="{Binding GroupName}" FontSize="20" Height="50"/>
+                    <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbGroupLeader" Grid.Row="2" Grid.Column="1" Text="{Binding GroupLeader}" Margin="0,20,0,0" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <!--List of all StudentTasks linked to the selected Group-->
-                    <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
+                    <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
                         <ListBox x:Name="listBoxStudentTasks" SelectionChanged="listBoxStudentTasks_SelectionChanged"/>
                     </ScrollViewer>
                     <!--List of all Students linked to the selected Group-->
-                    <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
-                        <ListBox x:Name="listBoxStudents"/>
+                    <ScrollViewer Grid.Row="4" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
+                        <ListBox x:Name="listBoxStudents" SelectionChanged="listBoxStudents_SelectionChanged"/>
                     </ScrollViewer>
-                    <Button x:Name="btnSaveGroupChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center" Click="btnSaveGroupChanges_Click"/>
-                    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btnSaveGroupChanges" Grid.Row="5" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center" Click="btnSaveGroupChanges_Click"/>
+                    <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button x:Name="btnCreateGroup" Content="Create Group" FontSize="20" HorizontalAlignment="Left" Click="btnCreateGroup_Click"/>
                         <Button x:Name="btnSaveNewGroup" Content="Save" FontSize="20" HorizontalAlignment="Right" Margin="30,0,0,0" Click="btnSaveNewGroup_Click"/>
                     </StackPanel>
-                    
+                    <ScrollViewer Grid.Row="6" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 20">
+                        <ListBox x:Name="listBoxStudentsToAdd" SelectionChanged="listBoxStudentsToAdd_SelectionChanged" />
+                    </ScrollViewer>
+
+                    <!--
+                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="20,50,0,0">
+                            <TextBlock Text="Add a student:" FontSize="30" Margin="100,10,0,0"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,10,0,0">
+                                <ListBox x:Name="listBoxStudentsToAdd" />
+                            </ScrollViewer>
+                                
+                        </StackPanel>
+                    </StackPanel>
+                    -->
                 </Grid>
             </Grid>
         </ScrollViewer>

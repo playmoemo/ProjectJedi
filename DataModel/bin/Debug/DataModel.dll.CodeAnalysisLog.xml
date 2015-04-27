@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#TimeSheetId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:25:46Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-27 13:34:01Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'Activity.TimeSheetId' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>
@@ -23,21 +23,21 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-04-26 16:25:46Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-04-27 13:34:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="e:\VSProjects\ProjectJediSolution\DataModel" File="TimeSheet.cs" Line="14">'TimeSheet.TimeSheet()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;TimeSheet..ctor()&#xD;&#xA;TimeSheet.set_Activities(ObservableCollection&lt;Activity&gt;):Void</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Activities" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-04-26 16:25:46Z" FixCategory="Breaking">
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2015-04-27 13:34:01Z" FixCategory="Breaking">
              <Issue Certainty="75" Level="Warning">Change 'TimeSheet.Activities' to be read-only by removing the property setter.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#TimeSheetName" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-26 16:25:46Z" FixCategory="Breaking">
+            <Message Id="TimeSheet" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2015-04-27 13:34:01Z" FixCategory="Breaking">
              <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'TimeSheet' in member name 'TimeSheet.TimeSheetName' exists as a discrete term. If your usage is intended to be single word, case it as 'Timesheet' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
             </Message>
            </Messages>

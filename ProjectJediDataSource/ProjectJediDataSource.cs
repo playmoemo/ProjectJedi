@@ -20,37 +20,34 @@ namespace ProjectJediDataSource
         private static DataContractJsonSerializerSettings jsonSerializerSettings;
         private static ProjectJediDataSource projectJediDataSource = new ProjectJediDataSource();
         private const string dateTimeFormat = "yyyy-MM-ddTHH:mm:ss";
+        //private const string dateTimeFormat = "dd/MM/yyyyTHH:mm:ss";
         private const string RestServiceUrl = "http://localhost:22618/";
         private static Student admin;
 
         private ProjectJediDataSource()
         {
-            //client = new HttpClient();
-            //client.BaseAddress = new Uri(RestServiceUrl);
-            //client.DefaultRequestHeaders.Accept.Clear();
-            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             jsonSerializerSettings = new DataContractJsonSerializerSettings { DateTimeFormat = new DateTimeFormat(dateTimeFormat) };
 
             //populateLocalResources();
         }
 
-        private ObservableCollection<Group> groups = new ObservableCollection<Group>();
-        public ObservableCollection<Group> Groups { get { return this.groups; } }
+        private static ObservableCollection<Group> groups = new ObservableCollection<Group>();
+        public static ObservableCollection<Group> Groups { get { return ProjectJediDataSource.groups; } }
 
-        private ObservableCollection<Student> students = new ObservableCollection<Student>();
-        public ObservableCollection<Student> Students { get { return this.students; } }
+        private static ObservableCollection<Student> students = new ObservableCollection<Student>();
+        public static ObservableCollection<Student> Students { get { return ProjectJediDataSource.students; } }
 
-        private ObservableCollection<StudentTask> studentTasks = new ObservableCollection<StudentTask>();
-        public ObservableCollection<StudentTask> StudentTasks { get { return this.studentTasks; } }
+        private static  ObservableCollection<StudentTask> studentTasks = new ObservableCollection<StudentTask>();
+        public static ObservableCollection<StudentTask> StudentTasks { get { return ProjectJediDataSource.studentTasks; } }
 
-        private ObservableCollection<TimeSheet> timeSheets = new ObservableCollection<TimeSheet>();
+        private static ObservableCollection<TimeSheet> timeSheets = new ObservableCollection<TimeSheet>();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheets")]
-        public ObservableCollection<TimeSheet> TimeSheets { get { return this.timeSheets; } }
+        public static ObservableCollection<TimeSheet> TimeSheets { get { return ProjectJediDataSource.timeSheets; } }
 
         // StudentTasks with close deadline to be presented in Notification area
-        private ObservableCollection<StudentTask> criticalTasks = new ObservableCollection<StudentTask>();
-        public ObservableCollection<StudentTask> CriticalTasks { get { return this.criticalTasks; } }
+        private static ObservableCollection<StudentTask> criticalTasks = new ObservableCollection<StudentTask>();
+        public static ObservableCollection<StudentTask> CriticalTasks { get { return ProjectJediDataSource.criticalTasks; } }
 
 
        /*Lage forskjellige versjoner av disse metodene utifra hva som skal
@@ -75,22 +72,22 @@ namespace ProjectJediDataSource
             return client;
         }
 
-        // TODO: implement this method!
+       
         public static async void populateLocalResources()
         {
-            ProjectJediDataSource.projectJediDataSource.groups = await ProjectJediDataSource.GetGroupsAsync();
-            ProjectJediDataSource.projectJediDataSource.students = await ProjectJediDataSource.GetStudentsAsync();
-            ProjectJediDataSource.projectJediDataSource.studentTasks = await ProjectJediDataSource.GetStudentTasksAsync();
-            ProjectJediDataSource.projectJediDataSource.timeSheets = await ProjectJediDataSource.GetTimeSheetsAsync();
+            ProjectJediDataSource.groups = await ProjectJediDataSource.GetGroupsAsync();
+            ProjectJediDataSource.students = await ProjectJediDataSource.GetStudentsAsync();
+            ProjectJediDataSource.studentTasks = await ProjectJediDataSource.GetStudentTasksAsync();
+            ProjectJediDataSource.timeSheets = await ProjectJediDataSource.GetTimeSheetsAsync();
             //this.activities = await ProjectJediDataSource.getActivitiesAsync();
 
 
-            // populate this.criticalTasks based on StudentTask Deadline Decending
-            foreach (var st in ProjectJediDataSource.projectJediDataSource.studentTasks)
+            // Tasks with logged in Student's StudentId
+            foreach (var st in ProjectJediDataSource.studentTasks)
 	        {
                 if (st.StudentId == admin.StudentId)
                 {
-                    ProjectJediDataSource.projectJediDataSource.criticalTasks.Add(st);
+                    ProjectJediDataSource.criticalTasks.Add(st);
                 }
                 
 	        }
@@ -136,14 +133,29 @@ namespace ProjectJediDataSource
 
                 response.EnsureSuccessStatusCode();
 
-                //ProjectJediDataSource.projectJediDataSource.groups.Remove(ProjectJediDataSource.projectJediDataSource.groups.First(g => g.GroupId == newGroup.GroupId));
-                //ProjectJediDataSource.projectJediDataSource.groups.Add(newGroup);
+                ProjectJediDataSource.groups.Remove(ProjectJediDataSource.groups.First(g => g.GroupId == newGroup.GroupId));
+                ProjectJediDataSource.groups.Add(newGroup);
             }
         }
 
 
-        public static async Task PostGroupAsyc(Group group)
+        public static async Task ObliterateGroupAsync(Group group)
         {
+            using (var client = setHttpClientSettings())
+            {
+                var jsonSerializer = new DataContractJsonSerializer(typeof(Group), jsonSerializerSettings);
+
+                var response = await client.DeleteAsync("api/Groups/" + group.GroupId);
+                response.EnsureSuccessStatusCode();
+
+                ProjectJediDataSource.groups.Remove(ProjectJediDataSource.groups.First(g => g.GroupId == group.GroupId));
+            }
+        }
+
+        public static async Task PostGroupAsyc(Group group, Student creator)
+        {
+            group.Students.Add(creator);
+
             using (var client = setHttpClientSettings())
             {
 
@@ -157,6 +169,8 @@ namespace ProjectJediDataSource
                 var response = await client.PostAsync("api/groups", content);
 
                 response.EnsureSuccessStatusCode();
+
+                ProjectJediDataSource.groups.Add(group);
             }
         }
 
@@ -218,8 +232,8 @@ namespace ProjectJediDataSource
 
                 response.EnsureSuccessStatusCode();
 
-                ProjectJediDataSource.projectJediDataSource.students.Remove(ProjectJediDataSource.projectJediDataSource.students.First(s => s.StudentId == student.StudentId));
-                ProjectJediDataSource.projectJediDataSource.students.Add(student);
+                ProjectJediDataSource.students.Remove(ProjectJediDataSource.students.First(s => s.StudentId == student.StudentId));
+                ProjectJediDataSource.students.Add(student);
             }
         }
 
@@ -228,17 +242,12 @@ namespace ProjectJediDataSource
         {
             using (var client = setHttpClientSettings())
             {
-                //client.BaseAddress = new Uri(RestServiceUrl);
-                //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                 var jsonSerializer = new DataContractJsonSerializer(typeof(Student), jsonSerializerSettings);
 
                 var response = await client.DeleteAsync("api/Students/" + student.StudentId);
                 response.EnsureSuccessStatusCode();
 
-                // update DataSource
-                //ProjectJediDataSource.projectJediDataSource.students.Remove(ProjectJediDataSource.projectJediDataSource.students.First(s => s.StudentId == student.StudentId));
+                ProjectJediDataSource.students.Remove(ProjectJediDataSource.students.First(s => s.StudentId == student.StudentId));
             }
         }
 
@@ -265,6 +274,27 @@ namespace ProjectJediDataSource
             }
         }
 
+        public static async Task UpdateStudentTaskAsync(StudentTask studentTask)
+        {
+            using (var client = setHttpClientSettings())
+            {
+
+                var jsonSerializer = new DataContractJsonSerializer(typeof(StudentTask), jsonSerializerSettings);
+
+                var stream = new MemoryStream();
+                jsonSerializer.WriteObject(stream, studentTask);
+                stream.Position = 0;
+                var content = new StringContent(new StreamReader(stream).ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync("api/StudentTasks/" + studentTask.StudentTaskId, content);
+
+                response.EnsureSuccessStatusCode();
+
+                ProjectJediDataSource.studentTasks.Remove(ProjectJediDataSource.studentTasks.First(st => st.StudentTaskId == studentTask.StudentTaskId));
+                ProjectJediDataSource.studentTasks.Add(studentTask);
+            }
+        }
+
         //DELETE
         public static async Task ObliterateStudentTaskAsync(StudentTask studentTask)
         {
@@ -277,7 +307,7 @@ namespace ProjectJediDataSource
                 response.EnsureSuccessStatusCode();
 
                 // update DataSource
-                ProjectJediDataSource.projectJediDataSource.studentTasks.Remove(ProjectJediDataSource.projectJediDataSource.studentTasks.First(st => st.StudentTaskId == studentTask.StudentTaskId));
+                ProjectJediDataSource.studentTasks.Remove(ProjectJediDataSource.studentTasks.First(st => st.StudentTaskId == studentTask.StudentTaskId));
             }
         }
 

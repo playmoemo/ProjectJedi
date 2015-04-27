@@ -157,8 +157,8 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{StaticResource TaskDeadline}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{StaticResource TaskStatus}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
 
-                    <TextBox x:Name="txtbGroupName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
-                    <TextBox x:Name="txtbGroupDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbStudentTaskName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbStudentTaskDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <!--Set the value from selectedItem-->
                     <StackPanel Grid.Row="2" Grid.Column="1">
                         <DatePicker x:Name="datePickerDeadline" HorizontalAlignment="Center" Margin="0,5"/>

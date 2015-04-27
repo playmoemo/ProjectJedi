@@ -1,6 +1,8 @@
-﻿using ProjectJediApplication.Common;
+﻿using DataModel;
+using ProjectJediApplication.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -65,12 +67,8 @@ namespace ProjectJediApplication
                 progressLoadingData.IsActive = false;
                 progressLoadingData.Visibility = Visibility.Collapsed;
                 
-                // test if username + password exists in DB
                 this.Frame.Navigate(typeof(LoginPage));
-                   
-                //when log-in match 
-                //this.Frame.Navigate(typeof(MainPage));
-                
+
             }
             else
             {
@@ -93,7 +91,6 @@ namespace ProjectJediApplication
                 return true;
 
             } catch(Exception e) {
-                //USE PROPER EXCEPTION HANDLING!!!
                 e.ToString();
                 return false;
             }

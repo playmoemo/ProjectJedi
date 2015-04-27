@@ -4,6 +4,7 @@
     <RootPropertyPathName Name="DefaultViewModel" />
     <RootPropertyPathName Name="Groups" />
     <RootPropertyPathName Name="SelectedItem" />
+    <RootPropertyPathName Name="GroupLeader" />
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="GroupName" />
     <RootPropertyPathName Name="GroupId" />
@@ -35,8 +36,8 @@
       <RootProperty Name="Text" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="Style" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="IsHitTestVisible" />

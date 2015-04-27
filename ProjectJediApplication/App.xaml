@@ -15,6 +15,7 @@
         <!--GroupsPage-->
         <x:String x:Key="GroupName">Group Name:</x:String>
         <x:String x:Key="GroupDescription">Description:</x:String>
+        <x:String x:Key="GroupLeader">Group Leader:</x:String>
         <!--StudentsPage-->
         <x:String x:Key="FirstName">First Name:</x:String>
         <x:String x:Key="LastName">Last Name:</x:String>

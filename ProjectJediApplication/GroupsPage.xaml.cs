@@ -1,7 +1,9 @@
 ﻿using DataModel;
 using ProjectJediApplication.Common;
+using ProjectJediApplication.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,6 +31,7 @@ namespace ProjectJediApplication
     public sealed partial class GroupsPage : Page
     {
         private Student admin;
+        private ParameterArguments arguments;
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -205,6 +208,37 @@ namespace ProjectJediApplication
             {
                 listBoxStudents.Items.Add(s);
             }
+
+            // Update ProjectJediDataSource against DB
+            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            // 
+            var allStudents = ProjectJediDataSource.ProjectJediDataSource.Students;
+            var studentList = allStudents.ToList();
+            var studentsInGroup = group.Students;
+            
+            listBoxStudentsToAdd.Items.Clear();
+            listBoxStudentsToAdd.DisplayMemberPath = "UserName";
+            
+            foreach (var student in studentList)
+            {
+                foreach (var s in studentsInGroup)
+                {
+                    if (student.StudentId == s.StudentId)
+                    {
+                        allStudents.Remove(student);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            foreach (var student in allStudents)
+            {
+                listBoxStudentsToAdd.Items.Add(student);
+            }
+            
         }
 
         private bool CanGoBack()
@@ -274,7 +308,9 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            admin = (Student)e.Parameter;
+            arguments = (ParameterArguments)e.Parameter;
+            admin = arguments.Administrator;
+            
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -288,28 +324,30 @@ namespace ProjectJediApplication
         // Top AppBar buttons
         private void appBarNavHome_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), arguments);
         }
 
         private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentsPage));
+            this.Frame.Navigate(typeof(StudentsPage), arguments);
         }
 
         private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TimeSheetsPage));
+            this.Frame.Navigate(typeof(TimeSheetsPage), arguments);
         }
 
         private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentTasksPage));
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
         }
 
         private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GroupsPage));
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
         }
+
+
 
         // PUT Group
         private async void btnSaveGroupChanges_Click(object sender, RoutedEventArgs e)
@@ -321,9 +359,12 @@ namespace ProjectJediApplication
             // PUT...
             await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(newGroup);
 
-            this.Frame.Navigate(typeof(GroupsPage));
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }
+
+
+
 
         // Bottom AppBar buttons
         private async void appBarDeleteGroup_Click(object sender, RoutedEventArgs e)
@@ -336,43 +377,26 @@ namespace ProjectJediApplication
                 //can delete
                 MessageDialog notAuthorizedDialog = new MessageDialog("You will now delete the group.");
                 await notAuthorizedDialog.ShowAsync();
-                // Delete as in ObliterateStudentAsync()......
+
+                await ProjectJediDataSource.ProjectJediDataSource.ObliterateGroupAsync(group);
+
+                this.Frame.Navigate(typeof(GroupsPage), arguments);
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
             }
             else
             {
                 MessageDialog notAuthorizedDialog = new MessageDialog("You are not authorized to delete a group.");
                 await notAuthorizedDialog.ShowAsync();
-            }
-
-            //List<Group> groupsList = admin.Groups.ToList();
-            //foreach (var g in groupsList)
-            //{
-            //    if (g.GroupLeader == admin.StudentId)
-            //    {
-            //        //can delete
-            //        MessageDialog notAuthorizedDialog = new MessageDialog("You will now delete the group.");
-            //        await notAuthorizedDialog.ShowAsync();
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        MessageDialog notAuthorizedDialog = new MessageDialog("You are not authorized to delete a group.");
-            //        await notAuthorizedDialog.ShowAsync();
-            //    }
-            //}
-            
-            
+            }            
         }
 
-        private void CommandInvokedHandler(IUICommand command)
-        {
-            
-        }
+       
         private void btnCreateGroup_Click(object sender, RoutedEventArgs e)
         {
             // clear input fields
             txtbGroupName.Text = "";
             txtbGroupDescription.Text = "";
+            txtbGroupLeader.Text = admin.StudentId.ToString();
             listBoxStudentTasks.Items.Clear();
             listBoxStudents.Items.Clear();
 
@@ -380,19 +404,51 @@ namespace ProjectJediApplication
 
         }
 
-        private void btnSaveNewGroup_Click(object sender, RoutedEventArgs e)
+        private async void btnSaveNewGroup_Click(object sender, RoutedEventArgs e)
         {
-            // POST Group...
+            if (txtbGroupName.Text.Count() < 1 || txtbGroupLeader.Text.Count() < 1)
+            {
+                MessageDialog missingInputDialog = new MessageDialog("You are missing some input.");
+                await missingInputDialog.ShowAsync();
+            }
+            else
+            {
+                Group group = new Group() { GroupName = txtbGroupName.Text, Description = txtbGroupDescription.Text, GroupLeader = admin.StudentId};
+                await ProjectJediDataSource.ProjectJediDataSource.PostGroupAsyc(group, admin);
+            }
         }
 
         private void listBoxStudentTasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // need StudentTaskId.....to navigate to StudentTasksPage
+            // Navigate to StudentTasksPage with the selected StudentTask as an argument
+
             StudentTask studentTask = (StudentTask)listBoxStudentTasks.SelectedItem;
-            this.Frame.Navigate(typeof(StudentTasksPage), studentTask);
+            ParameterArguments args = new ParameterArguments() {StudentTask = studentTask, Administrator = admin };
+            this.Frame.Navigate(typeof(StudentTasksPage), args);
         }
 
-        
+        private void listBoxStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Navigate to StudentsPage with the selected Student as a part of the argument
+            Student student = (Student)listBoxStudents.SelectedItem;
+            ParameterArguments args = new ParameterArguments() { Student = student, Administrator = admin };
+            this.Frame.Navigate(typeof(StudentsPage), args);
+        }
 
+        private async void listBoxStudentsToAdd_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Add selected Student to the currently selected Group and save changes
+            Student student = (Student)listBoxStudentsToAdd.SelectedItem;
+            ParameterArguments args = new ParameterArguments() { Student = student, Administrator = admin};
+
+            var group = (Group)this.itemListView.SelectedItem;
+            group.Students.Add(student);
+            
+            await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(group);
+            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
+            Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+        }
     }
 }

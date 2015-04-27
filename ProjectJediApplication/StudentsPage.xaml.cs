@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using ProjectJediApplication.Common;
+using ProjectJediApplication.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,12 +28,19 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class StudentsPage : Page
     {
+        private ParameterArguments arguments;
+        private Student admin;
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+
         /// <summary>
-        /// This can be changed to a strongly typed view model.
+        /// Gets the default view model.
         /// </summary>
+        /// <value>
+        /// The default view model.
+        /// </value>
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
@@ -88,8 +96,6 @@ namespace ProjectJediApplication
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a bindable group to Me.DefaultViewModel("Group")
-            // TODO: Assign a collection of bindable items to Me.DefaultViewModel("Items")
             this.DefaultViewModel["Students"] = await ProjectJediDataSource.ProjectJediDataSource.GetStudentsAsync();
 
             if (e.PageState == null)
@@ -246,6 +252,9 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var args = (ParameterArguments)e.Parameter;
+            arguments = args;
+            admin = args.Administrator;
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -260,49 +269,39 @@ namespace ProjectJediApplication
         // Bottom AppBar buttons
         private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)// send in parameters for logged in Student?
         {
-            //TODO: Student must be "Admin" to Delete other Students....!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
             Student student = (Student)this.itemListView.SelectedItem;
 
             await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentAsync(student);
 
-            //IList<Student> studentList = new Student[1];
-            //studentList.Add(student);
-            //SelectionChangedEventArgs args = new SelectionChangedEventArgs(studentList);
-            ////this.itemListView_SelectionChanged(sender, new SelectionChangedEventArgs(IList<Student> removedItems));
-            //this.itemListView_SelectionChanged(student, studentList);
-           
-            // crappy dirty fix!!!!!!!!!!!!!!!!!!!!!!!
-            this.Frame.Navigate(typeof(StudentsPage));
+            // Navigate to the same page to refresh
+            this.Frame.Navigate(typeof(StudentsPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }
 
         // Top AppBar buttons
         private void appBarNavHome_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), arguments);
         }
 
         private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentsPage));
+            this.Frame.Navigate(typeof(StudentsPage), arguments);
         }
 
         private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TimeSheetsPage));
+            this.Frame.Navigate(typeof(TimeSheetsPage), arguments);
         }
 
         private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentTasksPage));
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
         }
 
         private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GroupsPage));
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
         }
-
-        // Allow to edit Student if it is the logged in user's Student object!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 }

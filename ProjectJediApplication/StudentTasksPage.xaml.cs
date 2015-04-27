@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using ProjectJediApplication.Common;
+using ProjectJediApplication.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,8 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class StudentTasksPage : Page
     {
+        private ParameterArguments arguments;
+        private Student admin;
         private enum TaskStatus { New, Active, Finished };
 
         private NavigationHelper navigationHelper;
@@ -81,18 +84,14 @@ namespace ProjectJediApplication
             // set DatePicker and TimePicker
             datePickerDeadline.Date = studentTask.Deadline.Date;
             timePickerDeadline.Time = studentTask.Deadline.TimeOfDay;
-            // set ComboBox
-            String[] status = TaskStatus.GetNames(typeof(TaskStatus));
+
+            TaskStatus[] status = { TaskStatus.New, TaskStatus.Active, TaskStatus.Finished };
             comboStudentTaskStatus.Items.Clear();
-            foreach(String s in status) 
+            foreach (var s in status)
             {
                 comboStudentTaskStatus.Items.Add(s);
             }
-
-            // loop throug status-array and match with objects status(0/1/2)
-            //comboStudentTaskStatus   (show Status based on int from StudentTask)
-            
-
+            comboStudentTaskStatus.SelectedIndex = studentTask.Status;
         }
 
         /// <summary>
@@ -272,10 +271,14 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.itemListView.SelectedItem = null;
-            this.itemListView.SelectedItem = (StudentTask)e.Parameter;
-            //this.itemListView.SelectedItems.Add((StudentTask)e.Parameter);
-            //StudentTask studTask = (StudentTask)e.Parameter;
+            var args = (ParameterArguments)e.Parameter;
+            arguments = args;
+            admin = args.Administrator;
+
+            var taskToBeSelected = args.StudentTask;
+            
+            this.itemListView.SelectedItem = taskToBeSelected;
+
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -293,14 +296,7 @@ namespace ProjectJediApplication
 
             await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentTaskAsync(studentTask);
 
-            //IList<Student> studentList = new Student[1];
-            //studentList.Add(student);
-            //SelectionChangedEventArgs args = new SelectionChangedEventArgs(studentList);
-            ////this.itemListView_SelectionChanged(sender, new SelectionChangedEventArgs(IList<Student> removedItems));
-            //this.itemListView_SelectionChanged(student, studentList);
-
-            // crappy dirty fix!!!!!!!!!!!!!!!!!!!!!!!
-            this.Frame.Navigate(typeof(StudentTasksPage));
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }
 
@@ -308,41 +304,63 @@ namespace ProjectJediApplication
         // Top AppBar buttons
         private void appBarNavHome_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), arguments);
         }
 
         private void appBarNavStudents_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentsPage));
+            this.Frame.Navigate(typeof(StudentsPage), arguments);
         }
 
         private void appBarNavTimeSheets_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TimeSheetsPage));
+            this.Frame.Navigate(typeof(TimeSheetsPage), arguments);
         }
 
         private void appBarNavTasks_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentTasksPage));
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
         }
 
         private void appBarNavGroups_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GroupsPage));
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
         }
 
 
 
-        private void btnSaveTaskChanges_Click(object sender, RoutedEventArgs e)
+        private async void btnSaveTaskChanges_Click(object sender, RoutedEventArgs e)
         {
             //PUT...
+            var studentTask = (StudentTask)this.itemListView.SelectedItem;
+            var taskName = txtbStudentTaskName.Text;
+            var description = txtbStudentTaskDescription.Text;
+            
+            string dateString = datePickerDeadline.Date.ToString();
+            DateTime dateTime = datePickerDeadline.Date.DateTime;
+            var status = (TaskStatus)comboStudentTaskStatus.SelectedValue;
+            var updateStudentTask = new StudentTask() 
+            {
+                StudentTaskId = studentTask.StudentTaskId,
+                StudentTaskName = taskName,
+                Description = description,
+                Deadline = dateTime,
+                Status = (int)status,
+                StudentId = studentTask.StudentId,
+                GroupId = studentTask.GroupId
+            };
+
+            await ProjectJediDataSource.ProjectJediDataSource.UpdateStudentTaskAsync(updateStudentTask);
+            //ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
+            Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }
 
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
             //Clear all fields
-            txtbGroupName.Text = "";
-            txtbGroupDescription.Text = "";
+            txtbStudentTaskName.Text = "";
+            txtbStudentTaskDescription.Text = "";
             //datePickerDeadline.Date.Add();
             //comboStudentTaskStatus.Items.Select();
 

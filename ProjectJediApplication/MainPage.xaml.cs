@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using ProjectJediApplication.Common;
+using ProjectJediApplication.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,7 @@ namespace ProjectJediApplication
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private ParameterArguments arguments;
         private Student admin;
 
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -55,28 +57,28 @@ namespace ProjectJediApplication
 
         private void BtnGroups_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GroupsPage), admin);
+            this.Frame.Navigate(typeof(GroupsPage), arguments);
         }
 
         private void BtnStudents_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentsPage), admin);
+            this.Frame.Navigate(typeof(StudentsPage), arguments);
         }
 
 
         private void BtnStudentTasks_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentTasksPage), admin);
+            this.Frame.Navigate(typeof(StudentTasksPage), arguments);
         }
 
         private void BtnProgress_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ProgressPage), admin);
+            this.Frame.Navigate(typeof(ProgressPage), arguments);
         }
 
         private void BtnTimeSheets_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TimeSheetsPage), admin);
+            this.Frame.Navigate(typeof(TimeSheetsPage), arguments);
         }
 
 
@@ -88,7 +90,8 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            admin = (Student)e.Parameter;
+            arguments = (ParameterArguments)e.Parameter;
+            admin = arguments.Administrator;
 
             txtUserNameMainPage.Text = admin.UserName;
 
