@@ -165,6 +165,9 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Tile150x150.png" />
+    <Content Include="Assets\Tile30x30.png" />
+    <Content Include="Assets\Tile310x150.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
