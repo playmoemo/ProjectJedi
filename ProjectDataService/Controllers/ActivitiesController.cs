@@ -19,6 +19,7 @@ namespace ProjectDataService.Controllers
         private ProjectJediContext db = new ProjectJediContext();
 
         // GET: api/Activities
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public IQueryable<Activity> GetActivities()
         {
             return db.Activities;

@@ -24,7 +24,7 @@ namespace DataModel
         public string Description { get; set; }
 
         [Required]
-        public int GroupLeader { get; set; } // StudentId of Student that creates Group....
+        public int GroupLeader { get; set; }
 
         // Navigation Property
         //suppressed because of the way Entity Framework operates

@@ -17,6 +17,7 @@ namespace DataModel
         public double Hours { get; set; }
 
         // Foreign Key
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheet")]
         public int TimeSheetId { get; set; }
     }
 }

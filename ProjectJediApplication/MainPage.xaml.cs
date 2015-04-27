@@ -17,12 +17,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The main page of the application.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -31,9 +30,6 @@ namespace ProjectJediApplication
 
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
@@ -51,8 +47,7 @@ namespace ProjectJediApplication
             foreach (var st in admin.StudentTasks)
             {
                 listBoxNotifications.Items.Add(st);
-            }
-            
+            }   
         }
 
         private void BtnGroups_Click(object sender, RoutedEventArgs e)
@@ -84,17 +79,21 @@ namespace ProjectJediApplication
 
         private void hyperChangePhoto_Click(object sender, RoutedEventArgs e)
         {
-            // filepicker - MyPictures
+            // Not yet implemented
         }
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            arguments = (ParameterArguments)e.Parameter;
-            admin = arguments.Administrator;
+            if (null != e)
+            {
+                arguments = (ParameterArguments)e.Parameter;
+                admin = arguments.Administrator;
 
-            txtUserNameMainPage.Text = admin.UserName;
-            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+                txtUserNameMainPage.Text = admin.UserName;
+            }
+            
+            ProjectJediDataSource.ProjectJediDataSource.PopulateLocalResources();
             populateCriticalTasksListBox();
         }
     }

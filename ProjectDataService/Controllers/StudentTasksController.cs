@@ -47,11 +47,6 @@ namespace ProjectDataService.Controllers
                 return BadRequest(ModelState);
             }
 
-            //if (id != studentTask.StudentTaskId)
-            //{
-            //    return BadRequest();
-            //}
-
             db.Entry(studentTask).State = EntityState.Modified;
 
             try
@@ -82,19 +77,9 @@ namespace ProjectDataService.Controllers
                 return BadRequest(ModelState);
             }
 
-            // må ha en Student og en Group i studentTask
-
             var group = db.Groups.Find(studentTask.GroupId);
-            // check if the StudentTask exists
-            //var studentTasks = group.StudentTasks.ToList<StudentTask>();
-            //foreach (var st in studentTasks) {
-            //    if (studentTask.StudentTaskId == st.StudentTaskId)
-            //    {
-            //        return without adding to db
-            //    }
-            //}
-
-            group.StudentTasks.Add(studentTask); // kanskje ikke slik???
+            
+            group.StudentTasks.Add(studentTask); 
             db.StudentTasks.Add(studentTask);
             await db.SaveChangesAsync();
 

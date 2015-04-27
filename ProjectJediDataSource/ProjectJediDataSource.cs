@@ -13,14 +13,14 @@ using System.IO;
 
 namespace ProjectJediDataSource
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1052:StaticHolderTypesShouldBeSealed"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
     public class ProjectJediDataSource
     {
-        //private static HttpClient client;
         private static DataContractJsonSerializerSettings jsonSerializerSettings;
+        // It is used
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         private static ProjectJediDataSource projectJediDataSource = new ProjectJediDataSource();
         private const string dateTimeFormat = "yyyy-MM-ddTHH:mm:ss";
-        //private const string dateTimeFormat = "dd/MM/yyyyTHH:mm:ss";
         private const string RestServiceUrl = "http://localhost:22618/";
         private static Student admin;
 
@@ -28,8 +28,6 @@ namespace ProjectJediDataSource
         {
 
             jsonSerializerSettings = new DataContractJsonSerializerSettings { DateTimeFormat = new DateTimeFormat(dateTimeFormat) };
-
-            //populateLocalResources();
         }
 
         private static ObservableCollection<Group> groups = new ObservableCollection<Group>();
@@ -45,23 +43,22 @@ namespace ProjectJediDataSource
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheets")]
         public static ObservableCollection<TimeSheet> TimeSheets { get { return ProjectJediDataSource.timeSheets; } }
 
-        // StudentTasks with close deadline to be presented in Notification area
         private static ObservableCollection<StudentTask> criticalTasks = new ObservableCollection<StudentTask>();
         public static ObservableCollection<StudentTask> CriticalTasks { get { return ProjectJediDataSource.criticalTasks; } }
 
-
-       /*Lage forskjellige versjoner av disse metodene utifra hva som skal
-        * vises på siden(f.eks i Notification area, hente StudentTasks på deadline)
-        */
-
-
-        public static void setAdmin(Student student)
+        /// <summary>
+        /// Sets the administrator.
+        /// </summary>
+        /// <param name="student">The student.</param>
+        public static void SetAdmin(Student student)
         {
             ProjectJediDataSource.admin = student;
-
         }
 
-
+        /// <summary>
+        /// Sets the HTTP client settings.
+        /// </summary>
+        /// <returns>The client</returns>
         private static HttpClient setHttpClientSettings()
         {
             HttpClient client = new HttpClient();
@@ -72,29 +69,28 @@ namespace ProjectJediDataSource
             return client;
         }
 
-       
-        public static async void populateLocalResources()
+
+        /// <summary>
+        /// Populates the local collections.
+        /// </summary>
+        public static async void PopulateLocalResources()
         {
             ProjectJediDataSource.groups = await ProjectJediDataSource.GetGroupsAsync();
             ProjectJediDataSource.students = await ProjectJediDataSource.GetStudentsAsync();
             ProjectJediDataSource.studentTasks = await ProjectJediDataSource.GetStudentTasksAsync();
             ProjectJediDataSource.timeSheets = await ProjectJediDataSource.GetTimeSheetsAsync();
-            //this.activities = await ProjectJediDataSource.getActivitiesAsync();
 
-
-            // Tasks with logged in Student's StudentId
             foreach (var st in ProjectJediDataSource.studentTasks)
 	        {
                 if (st.StudentId == admin.StudentId)
                 {
                     ProjectJediDataSource.criticalTasks.Add(st);
                 }
-                
 	        }
-            
         }
 
         //======================================GROUP=========================================================================
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public static async Task<ObservableCollection<Group>> GetGroupsAsync()
         {
             using (var client = setHttpClientSettings())
@@ -121,7 +117,6 @@ namespace ProjectJediDataSource
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var jsonSerializer = new DataContractJsonSerializer(typeof(Group), jsonSerializerSettings);
 
                 var stream = new MemoryStream();
@@ -152,6 +147,8 @@ namespace ProjectJediDataSource
             }
         }
 
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Asyc")]
         public static async Task PostGroupAsyc(Group group, Student creator)
         {
             group.Students.Add(creator);
@@ -175,11 +172,11 @@ namespace ProjectJediDataSource
         }
 
         //===============================================STUDENT==========================================================
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public static async Task<ObservableCollection<Student>> GetStudentsAsync()
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var response = await client.GetAsync("api/Students");
 
                 if (response.IsSuccessStatusCode)
@@ -197,11 +194,12 @@ namespace ProjectJediDataSource
             }
         }
 
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Asyc")]
         public static async Task PostStudentAsyc(Student student)
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var jsonSerializer = new DataContractJsonSerializer(typeof(Student), jsonSerializerSettings);
 
                 var stream = new MemoryStream();
@@ -217,12 +215,11 @@ namespace ProjectJediDataSource
             }
         }
 
-        // Update a student with PUT
+        
         public static async Task UpdateStudentAsync(Student student)
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var jsonSerializer = new DataContractJsonSerializer(typeof(Student), jsonSerializerSettings);
 
                 var stream = new MemoryStream();
@@ -239,7 +236,7 @@ namespace ProjectJediDataSource
             }
         }
 
-        // Delete student with DELETE
+        
         public static async Task ObliterateStudentAsync(Student student)
         {
             using (var client = setHttpClientSettings())
@@ -254,11 +251,11 @@ namespace ProjectJediDataSource
         }
 
         //===================================STUDENTTASK=====================================================================
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public static async Task<ObservableCollection<StudentTask>> GetStudentTasksAsync()
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var response = await client.GetAsync("api/StudentTasks");
 
                 if (response.IsSuccessStatusCode)
@@ -280,7 +277,6 @@ namespace ProjectJediDataSource
         {
             using (var client = setHttpClientSettings())
             {
-
                 var jsonSerializer = new DataContractJsonSerializer(typeof(StudentTask), jsonSerializerSettings);
 
                 var stream = new MemoryStream();
@@ -289,7 +285,6 @@ namespace ProjectJediDataSource
 
                 var content = new StringContent(new StreamReader(stream).ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("api/StudentTasks", content);
-
 
                 response.EnsureSuccessStatusCode();
 
@@ -301,7 +296,6 @@ namespace ProjectJediDataSource
         {
             using (var client = setHttpClientSettings())
             {
-
                 var jsonSerializer = new DataContractJsonSerializer(typeof(StudentTask), jsonSerializerSettings);
 
                 var stream = new MemoryStream();
@@ -318,29 +312,27 @@ namespace ProjectJediDataSource
             }
         }
 
-        //DELETE
+        
         public static async Task ObliterateStudentTaskAsync(StudentTask studentTask)
         {
             using (var client = setHttpClientSettings())
             {
-
                 var jsonSerializer = new DataContractJsonSerializer(typeof(StudentTask), jsonSerializerSettings);
 
                 var response = await client.DeleteAsync("api/StudentTasks/" + studentTask.StudentTaskId);
                 response.EnsureSuccessStatusCode();
 
-                // update DataSource
                 ProjectJediDataSource.studentTasks.Remove(ProjectJediDataSource.studentTasks.First(st => st.StudentTaskId == studentTask.StudentTaskId));
             }
         }
 
 
         // ========================================TIMESHEET========================================================
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheets"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public static async Task<ObservableCollection<TimeSheet>> GetTimeSheetsAsync()
         {
             using (var client = setHttpClientSettings())
             {
-                
                 var response = await client.GetAsync("api/Timesheets");
 
                 if (response.IsSuccessStatusCode)
@@ -357,8 +349,5 @@ namespace ProjectJediDataSource
                 }
             }
         }
-        //Todo: create methods for all the other stuff I need...
-
-        
     }
 }

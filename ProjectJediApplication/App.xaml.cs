@@ -16,8 +16,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-
 namespace ProjectJediApplication
 {
     /// <summary>
@@ -139,11 +137,7 @@ namespace ProjectJediApplication
         {
             //var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
-            //await ProjectJediApplication.Common.SuspensionManager.SaveAsync();
-            //deferral.Complete();
-
-            //Boolean isRemainingLoggedIn = true;
-            //ApplicationData.Current.LocalSettings.Values["isRemainingLoggedIn"] = isRemainingLoggedIn;
+            
         }
     }
 }

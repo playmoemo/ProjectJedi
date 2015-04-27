@@ -37,6 +37,7 @@ namespace ProjectJediApplication.DataModel
             get { return null; }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public ObservableCollection<Activity> Activities
         {
             get { return null; }

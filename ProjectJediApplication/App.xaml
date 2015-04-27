@@ -32,7 +32,6 @@
         <x:String x:Key="TaskPickOwner">Pick Owner:</x:String>
 
         <!--TimesheetsPage-->
-        
         <x:String x:Key="Task">Task 1</x:String>
         <x:String x:Key="Group">Group 1</x:String>
 

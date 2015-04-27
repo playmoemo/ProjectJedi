@@ -18,12 +18,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The page that loads data from DB on application start
     /// </summary>
     public sealed partial class DataLoadingPage : Page
     {
@@ -47,14 +45,13 @@ namespace ProjectJediApplication
         {
             this.InitializeComponent();
 
-            // Setup the navigation helper
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
-
-            //activateDataLoading();
-            
         }
 
+        /// <summary>
+        /// Activates the data loading.
+        /// </summary>
         private async void activateDataLoading()
         {
             progressLoadingData.IsActive = true;
@@ -79,7 +76,11 @@ namespace ProjectJediApplication
             }
         }
 
-        
+
+        /// <summary>
+        /// Gets the data from database.
+        /// </summary>
+        /// <returns>A boolean value true or false</returns>
         private async Task<Boolean> getDataFromDatabase()
         {
             try { 
@@ -90,53 +91,24 @@ namespace ProjectJediApplication
 
                 return true;
 
-            } catch(Exception e) {
-                e.ToString();
+            } catch(TimeoutException) {
                 return false;
+                throw;
             }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //if (e.Parameter == null)
-            //{
-            //    willLoadLogin = true;
-            //}
-            //else
-            //{
-            //    willLoadLogin = (Boolean)e.Parameter;
-            //}
-            
             activateDataLoading();
             navigationHelper.OnNavigatedTo(e);
         }
 
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // Restore the previously saved state associated with this page
             if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))
             {
-                //ApplicationDataContainer roamingSettings = ApplicationData.Current.RoamingSettings;
                 
-                //willLoadLogin = (Boolean)e.PageState["automaticLogin"];
             }
-
-            //willLoadLogin = (Boolean)e.NavigationParameter;
-            //activateDataLoading();
-
-
-            //if (e.PageState == null)
-            //{
-                
-            //}
-            //else
-            //{
-            //    // Restore the previously saved state associated with this page
-            //    if (e.PageState != null && e.PageState.ContainsKey("automaticLogin"))
-            //    {
-                    
-            //    }
-            //}
         }
     }
 }

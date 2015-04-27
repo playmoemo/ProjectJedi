@@ -19,13 +19,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// A page that displays a group title, a list of items within the group, and details for
-    /// the currently selected item.
+    ///The page that displays, creates and edit tasks 
     /// </summary>
     public sealed partial class StudentTasksPage : Page
     {
@@ -36,9 +34,6 @@ namespace ProjectJediApplication
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
@@ -57,7 +52,6 @@ namespace ProjectJediApplication
         {
             this.InitializeComponent();
 
-            // Setup the navigation helper
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -82,9 +76,8 @@ namespace ProjectJediApplication
 
 
             var studentTask = (StudentTask)this.itemListView.SelectedItem;
-            // set DatePicker and TimePicker
+            
             datePickerDeadline.Date = studentTask.Deadline.Date;
-            //timePickerDeadline.Time = studentTask.Deadline.TimeOfDay;
 
             TaskStatus[] status = { TaskStatus.New, TaskStatus.Active, TaskStatus.Finished };
             comboStudentTaskStatus.Items.Clear();
@@ -108,16 +101,10 @@ namespace ProjectJediApplication
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a bindable group to Me.DefaultViewModel("Group")
-            // TODO: Assign a collection of bindable items to Me.DefaultViewModel("Items")
             this.DefaultViewModel["StudentTasks"] = await ProjectJediDataSource.ProjectJediDataSource.GetStudentTasksAsync();
 
             if (e.PageState == null)
             {
-                //this.itemListView.SelectedItem = null;
-                //this.itemListView.SelectedItem = (StudentTask)e.NavigationParameter;
-
-
                 // When this is a new page, select the first item automatically unless logical page
                 // navigation is being used (see the logical page navigation #region below.)
                 if (!this.UsingLogicalPageNavigation() && this.tasksViewSource.View != null)
@@ -136,8 +123,6 @@ namespace ProjectJediApplication
                 }
             }
         }
-
-
 
 
         /// <summary>
@@ -272,14 +257,17 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var args = (ParameterArguments)e.Parameter;
-            arguments = args;
-            admin = args.Administrator;
+            if (null != e)
+            {
+                var args = (ParameterArguments)e.Parameter;
+                arguments = args;
+                admin = args.Administrator;
 
-            var taskToBeSelected = args.StudentTask;
+                var taskToBeSelected = args.StudentTask;
+
+                this.itemListView.SelectedItem = taskToBeSelected;
+            }
             
-            this.itemListView.SelectedItem = taskToBeSelected;
-
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -329,15 +317,12 @@ namespace ProjectJediApplication
         }
 
 
-
         private async void btnSaveTaskChanges_Click(object sender, RoutedEventArgs e)
         {
-            //PUT...
             var studentTask = (StudentTask)this.itemListView.SelectedItem;
             var taskName = txtbStudentTaskName.Text;
             var description = txtbStudentTaskDescription.Text;
             var studentId = int.Parse(txtbOwner.Text);
-            
             
             string dateString = datePickerDeadline.Date.ToString();
             DateTime dateTime = datePickerDeadline.Date.DateTime;
@@ -354,22 +339,19 @@ namespace ProjectJediApplication
             };
 
             await ProjectJediDataSource.ProjectJediDataSource.UpdateStudentTaskAsync(updateStudentTask);
-            //ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
             this.Frame.Navigate(typeof(StudentTasksPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }
 
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
-            //Clear and set fields
             txtbStudentTaskName.Text = "";
             txtbStudentTaskDescription.Text = "";
             datePickerDeadline.Date = DateTime.Now;
             comboStudentTaskStatus.SelectedIndex = 0;
             txtbOwner.Text = admin.StudentId.ToString();
 
-            
-            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            ProjectJediDataSource.ProjectJediDataSource.PopulateLocalResources();
             var groups = ProjectJediDataSource.ProjectJediDataSource.Groups;
             var students = ProjectJediDataSource.ProjectJediDataSource.Students;
 
@@ -414,7 +396,6 @@ namespace ProjectJediApplication
                 this.Frame.Navigate(typeof(StudentTasksPage), arguments);
                 Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
             }
-
         }
 
         private void listBoxPickGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)

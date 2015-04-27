@@ -16,13 +16,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// A page that displays a group title, a list of items within the group, and details for
-    /// the currently selected item.
+    /// The page that show timesheets
     /// </summary>
     public sealed partial class TimeSheetsPage : Page
     {
@@ -50,7 +48,6 @@ namespace ProjectJediApplication
         {
             this.InitializeComponent();
 
-            // Setup the navigation helper
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -87,8 +84,6 @@ namespace ProjectJediApplication
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a bindable group to Me.DefaultViewModel("Group")
-            // TODO: Assign a collection of bindable items to Me.DefaultViewModel("Items")
             this.DefaultViewModel["TimeSheets"] = await ProjectJediDataSource.ProjectJediDataSource.GetTimeSheetsAsync();
 
             if (e.PageState == null)
@@ -257,8 +252,7 @@ namespace ProjectJediApplication
         // Bottom AppBar buttons
         private void appBarDeleteTimeSheet_Click(object sender, RoutedEventArgs e)// parameter to ID Student admin/group leader
         {
-            // logged in Student must be "Admin" to Delete TimeSheets
-            // ref. ObliterateStudentAsync()...
+            // Not yet implemented
         }
 
         // Top AppBar buttons

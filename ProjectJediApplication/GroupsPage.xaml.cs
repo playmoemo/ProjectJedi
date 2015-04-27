@@ -20,7 +20,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
 namespace ProjectJediApplication
 {
@@ -78,14 +77,7 @@ namespace ProjectJediApplication
             if (this.UsingLogicalPageNavigation())
             {
                 this.navigationHelper.GoBackCommand.RaiseCanExecuteChanged();
-            }
-
-            //var group = (Group)this.itemListView.SelectedItem;
-            //foreach(var st in group.StudentTasks)
-            //{
-            //    listBoxStudentTasks.Items.Add(st.StudentTaskName);
-            //}
-            
+            }            
         }
 
         /// <summary>
@@ -101,8 +93,6 @@ namespace ProjectJediApplication
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a bindable group to Me.DefaultViewModel("Group")
-            // TODO: Assign a collection of bindable items to Me.DefaultViewModel("Items")
             this.DefaultViewModel["Groups"] = await ProjectJediDataSource.ProjectJediDataSource.GetGroupsAsync();
 
             if (e.PageState == null)
@@ -192,8 +182,7 @@ namespace ProjectJediApplication
 
             // Populate ListBox with StudentTasks
             var group = (Group)this.itemListView.SelectedItem;
-            //var studentTasks = group.StudentTasks.ToList();
-
+            
             listBoxStudentTasks.Items.Clear();
             listBoxStudentTasks.DisplayMemberPath = "StudentTaskName";
             foreach (var st in group.StudentTasks)
@@ -210,7 +199,7 @@ namespace ProjectJediApplication
             }
 
             // Update ProjectJediDataSource against DB
-            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            ProjectJediDataSource.ProjectJediDataSource.PopulateLocalResources();
             // 
             var allStudents = ProjectJediDataSource.ProjectJediDataSource.Students;
             var studentList = allStudents.ToList();
@@ -308,10 +297,14 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            arguments = (ParameterArguments)e.Parameter;
-            admin = arguments.Administrator;
+            if (null != e)
+            {
+                arguments = (ParameterArguments)e.Parameter;
+                admin = arguments.Administrator;
+
+                navigationHelper.OnNavigatedTo(e);
+            }
             
-            navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -356,7 +349,7 @@ namespace ProjectJediApplication
             var groupName = txtbGroupName.Text;
             var groupDescription = txtbGroupDescription.Text;
             var newGroup = new Group() { GroupId = group.GroupId, GroupName = groupName, Description = groupDescription, Students = group.Students, StudentTasks = group.StudentTasks};
-            // PUT...
+            
             await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(newGroup);
 
             this.Frame.Navigate(typeof(GroupsPage), arguments);
@@ -369,12 +362,10 @@ namespace ProjectJediApplication
         // Bottom AppBar buttons
         private async void appBarDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
-            // Student must be "Admin" to delete or edit Group...
             var group = (Group)itemListView.SelectedItem;
 
             if (group.GroupLeader == admin.StudentId)
             {
-                //can delete
                 MessageDialog notAuthorizedDialog = new MessageDialog("You will now delete the group.");
                 await notAuthorizedDialog.ShowAsync();
 
@@ -424,7 +415,6 @@ namespace ProjectJediApplication
         private void listBoxStudentTasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Navigate to StudentTasksPage with the selected StudentTask as an argument
-
             StudentTask studentTask = (StudentTask)listBoxStudentTasks.SelectedItem;
             ParameterArguments args = new ParameterArguments() {StudentTask = studentTask, Administrator = admin };
             this.Frame.Navigate(typeof(StudentTasksPage), args);
@@ -448,7 +438,7 @@ namespace ProjectJediApplication
             group.Students.Add(student);
             
             await ProjectJediDataSource.ProjectJediDataSource.UpdateGroupAsync(group);
-            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            ProjectJediDataSource.ProjectJediDataSource.PopulateLocalResources();
 
             this.Frame.Navigate(typeof(GroupsPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);

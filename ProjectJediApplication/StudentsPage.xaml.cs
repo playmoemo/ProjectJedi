@@ -18,17 +18,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// A page that displays a group title, a list of items within the group, and details for
-    /// the currently selected item.
+    /// The page that show information about Students
     /// </summary>
     public sealed partial class StudentsPage : Page
     {
         private ParameterArguments arguments;
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         private Student admin;
 
         private NavigationHelper navigationHelper;
@@ -59,7 +58,6 @@ namespace ProjectJediApplication
         {
             this.InitializeComponent();
 
-            // Setup the navigation helper
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -252,9 +250,13 @@ namespace ProjectJediApplication
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var args = (ParameterArguments)e.Parameter;
-            arguments = args;
-            admin = args.Administrator;
+            if (null != e)
+            {
+                var args = (ParameterArguments)e.Parameter;
+                arguments = args;
+                admin = args.Administrator;
+            }
+           
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -267,13 +269,12 @@ namespace ProjectJediApplication
 
 
         // Bottom AppBar buttons
-        private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)// send in parameters for logged in Student?
+        private async void appBarDeleteStudent_Click(object sender, RoutedEventArgs e)
         {
             Student student = (Student)this.itemListView.SelectedItem;
 
             await ProjectJediDataSource.ProjectJediDataSource.ObliterateStudentAsync(student);
 
-            // Navigate to the same page to refresh
             this.Frame.Navigate(typeof(StudentsPage), arguments);
             Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
         }

@@ -80,10 +80,6 @@
             IsSwipeEnabled="False"
                                                             >
 
-            <!--
-            <TextBlock Text="Student 1" FontSize="30"/>
-            <TextBlock Text="Student 2" FontSize="30"/>
-            -->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="6">
@@ -137,7 +133,6 @@
                     <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding UserName}" Style="{StaticResource CustomSubheaderTextBlockStyle}"/>
                 </StackPanel>
                 
-                <!--THIS AREA WILL ONLY BE ALLOWED TO EDIT IF USER IS THE LOGGED IN STUDENT-->
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
@@ -160,16 +155,6 @@
                     <TextBox Grid.Row="2" Grid.Column="1" Margin="0,20,0,0" Text="{Binding UserName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox Grid.Row="3" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Email}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                 </Grid>
-                
-                
-                <!--
-                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1">
-                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="Student 1 Username" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="First name" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Margin="0,0,0,20" Text="Last name" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                </StackPanel>
-                <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,20,0,0" Text="This section will contain details about the selected Student(from Groups). No edit functionality for current user..." Style="{StaticResource BodyTextBlockStyle}"/>
-                -->
             </Grid>
         </ScrollViewer>
 

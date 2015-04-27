@@ -138,7 +138,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--<Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>-->
                 <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock x:Name="itemTitle" Text="{Binding GroupName}" Style="{StaticResource CustomSubheaderTextBlockStyle}"/>
                 </StackPanel>
@@ -188,17 +187,6 @@
                         <ListBox x:Name="listBoxStudentsToAdd" SelectionChanged="listBoxStudentsToAdd_SelectionChanged" />
                     </ScrollViewer>
 
-                    <!--
-                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" Margin="20,50,0,0">
-                            <TextBlock Text="Add a student:" FontSize="30" Margin="100,10,0,0"/>
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,10,0,0">
-                                <ListBox x:Name="listBoxStudentsToAdd" />
-                            </ScrollViewer>
-                                
-                        </StackPanel>
-                    </StackPanel>
-                    -->
                 </Grid>
             </Grid>
         </ScrollViewer>

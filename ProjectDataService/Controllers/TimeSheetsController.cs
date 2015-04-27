@@ -14,18 +14,20 @@ using DataModel;
 
 namespace ProjectDataService.Controllers
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheets")]
     public class TimeSheetsController : ApiController
     {
         private ProjectJediContext db = new ProjectJediContext();
 
         // GET: api/TimeSheets
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheets"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public IQueryable<TimeSheet> GetTimeSheets()
         {
             return db.TimeSheets.Include(g => g.Activities);
         }
 
         // GET: api/TimeSheets/5
-        [ResponseType(typeof(TimeSheet))]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheet"), ResponseType(typeof(TimeSheet))]
         public async Task<IHttpActionResult> GetTimeSheet(int id)
         {
             TimeSheet timeSheet = await db.TimeSheets.FindAsync(id);
@@ -34,14 +36,13 @@ namespace ProjectDataService.Controllers
                 return NotFound();
             }
 
-            // Add Activities related to a TimeSheet
             await db.Entry(timeSheet).Collection(t => t.Activities).LoadAsync();
 
             return Ok(timeSheet);
         }
 
         // PUT: api/TimeSheets/5
-        [ResponseType(typeof(void))]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheet"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "timeSheet"), ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutTimeSheet(int id, TimeSheet timeSheet)
         {
             if (!ModelState.IsValid)
@@ -78,7 +79,7 @@ namespace ProjectDataService.Controllers
        
 
         // POST: api/TimeSheets
-        [ResponseType(typeof(TimeSheet))]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheet"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "timeSheet"), ResponseType(typeof(TimeSheet))]
         public async Task<IHttpActionResult> PostTimeSheet(TimeSheet timeSheet)
         {
             if (!ModelState.IsValid)
@@ -93,7 +94,7 @@ namespace ProjectDataService.Controllers
         }
 
         // DELETE: api/TimeSheets/5
-        [ResponseType(typeof(TimeSheet))]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "TimeSheet"), ResponseType(typeof(TimeSheet))]
         public async Task<IHttpActionResult> DeleteTimeSheet(int id)
         {
             TimeSheet timeSheet = await db.TimeSheets.FindAsync(id);

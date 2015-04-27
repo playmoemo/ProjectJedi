@@ -81,17 +81,10 @@ namespace ProjectDataService.Controllers
 
         // POST: api/Groups
         [ResponseType(typeof(Group))]
-
-        // Add the Student that creates the Group as second parameter?
         public async Task<IHttpActionResult> PostGroup(Group group)
         {
             var students = group.Students.ToList<Student>();
             group.Students.Clear();
-
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
 
             foreach (var s in students)
             {

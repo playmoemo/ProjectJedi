@@ -20,13 +20,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProjectJediApplication
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The page used for login
     /// </summary>
+    // I prefer Login
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login")]
     public sealed partial class LoginPage : Page
     {
         private ParameterArguments arguments;
@@ -41,28 +42,19 @@ namespace ProjectJediApplication
             get { return this.navigationHelper; }
         }
 
-        private Boolean isLoggedIn = true;
+        //private Boolean isLoggedIn = true;
        
         
         public LoginPage()
         {
             this.InitializeComponent();
 
-            // Setup the navigation helper
             this.navigationHelper = new NavigationHelper(this);
-            //this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
         }
 
         private async void btnSaveUserInformation_Click(object sender, RoutedEventArgs e)
         {
-            /*
-             * 1: POST a student for the current user
-             * 2: save state for the CheckBox
-             *      - check boolean value when app loads(DataLoadingPage.xaml.cs)[loadstate???]
-             *      - Test roamingSettings hvis ikke current løsning funker!
-             */
-            //Input validation
             string password = null;
             if (txtbFirstName.Text.Length != 0 || txtbLastName.Text.Length != 0 || txtbUserName.Text.Length != 0)
             {
@@ -73,11 +65,9 @@ namespace ProjectJediApplication
                 }
                 else
                 {
-                    // Errordialog
                     MessageDialog passDialog = new MessageDialog("Passwords don't match. Try again.");
                     await passDialog.ShowAsync();
-                }
-                
+                }  
             }
             else
             {
@@ -98,7 +88,6 @@ namespace ProjectJediApplication
             };
 
             // save the user to DB
-            // return the created Student and pass it to Navigate as parameter
             await ProjectJediDataSource.ProjectJediDataSource.PostStudentAsyc(student);
 
             var students = await ProjectJediDataSource.ProjectJediDataSource.GetStudentsAsync();
@@ -106,7 +95,6 @@ namespace ProjectJediApplication
             {
                 if (s.UserName.Equals(student.UserName))
                 {
-                    // hvorfor kommer denne når jeg lager ny bruker?
                     MessageDialog userExistsDialog = new MessageDialog("Your user is created. You will be automatically logged in now.");
                     await userExistsDialog.ShowAsync();
 
@@ -122,7 +110,6 @@ namespace ProjectJediApplication
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //Check if user exists in DB
             string uName = txtbUserNameLogin.Text;
             string pass = passwordLogin.Password;
 
@@ -141,8 +128,8 @@ namespace ProjectJediApplication
             {
                 if (s.UserName.Equals(uName) && s.Password.Equals(pass))
                 {
-                    ProjectJediDataSource.ProjectJediDataSource.setAdmin(s);
-                    ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+                    ProjectJediDataSource.ProjectJediDataSource.SetAdmin(s);
+                    ProjectJediDataSource.ProjectJediDataSource.PopulateLocalResources();
 
                     arguments = new ParameterArguments() { Administrator = s};
                     this.Frame.Navigate(typeof(MainPage), arguments);
@@ -173,12 +160,11 @@ namespace ProjectJediApplication
            
         }
 
-
+        // Did not have time to implement this
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "e")]
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             //TODO: Save application state and stop any background activity
         }
-
-        
     }
 }

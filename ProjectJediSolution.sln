@@ -10,9 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{34C71B2F-190B-4BB3-9F45-E14F5ABBA07B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D142242B-1D5D-4716-AE6B-0201A3310B3E}"
-	ProjectSection(SolutionItems) = preProject
-		notes.txt = notes.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectJediDataSource", "ProjectJediDataSource\ProjectJediDataSource.csproj", "{BF43F500-0F17-46EA-8FA9-0984A91086BC}"
 EndProject
