@@ -4,3 +4,4 @@ E:\VSProjects\ProjectJediSolution\DataModel\bin\Debug\DataModel.dll.CodeAnalysis
 E:\VSProjects\ProjectJediSolution\DataModel\bin\Debug\DataModel.dll.lastcodeanalysissucceeded
 E:\VSProjects\ProjectJediSolution\DataModel\obj\Debug\DataModel.dll
 E:\VSProjects\ProjectJediSolution\DataModel\obj\Debug\DataModel.pdb
+E:\VSProjects\ProjectJediSolution\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
