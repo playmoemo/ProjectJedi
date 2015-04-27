@@ -212,6 +212,8 @@ namespace ProjectJediDataSource
                 var response = await client.PostAsync("api/students", content);
 
                 response.EnsureSuccessStatusCode();
+
+                ProjectJediDataSource.students.Add(student);
             }
         }
 
@@ -271,6 +273,27 @@ namespace ProjectJediDataSource
                 {
                     return null;
                 }
+            }
+        }
+
+        public static async Task PostStudentTaskAsync(StudentTask studentTask)
+        {
+            using (var client = setHttpClientSettings())
+            {
+
+                var jsonSerializer = new DataContractJsonSerializer(typeof(StudentTask), jsonSerializerSettings);
+
+                var stream = new MemoryStream();
+                jsonSerializer.WriteObject(stream, studentTask);
+                stream.Position = 0;
+
+                var content = new StringContent(new StreamReader(stream).ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("api/StudentTasks", content);
+
+
+                response.EnsureSuccessStatusCode();
+
+                ProjectJediDataSource.studentTasks.Add(studentTask);
             }
         }
 

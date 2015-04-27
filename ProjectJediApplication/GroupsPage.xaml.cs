@@ -415,6 +415,9 @@ namespace ProjectJediApplication
             {
                 Group group = new Group() { GroupName = txtbGroupName.Text, Description = txtbGroupDescription.Text, GroupLeader = admin.StudentId};
                 await ProjectJediDataSource.ProjectJediDataSource.PostGroupAsyc(group, admin);
+
+                this.Frame.Navigate(typeof(GroupsPage), arguments);
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
             }
         }
 

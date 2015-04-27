@@ -45,14 +45,9 @@ namespace ProjectDataService.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutGroup(int id, Group group)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            if (id != group.GroupId)
+            if (!ModelState.IsValid || id != group.GroupId)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
             var oldGroup = db.Groups.Find(group.GroupId);

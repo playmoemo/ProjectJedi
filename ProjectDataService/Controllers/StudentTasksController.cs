@@ -42,15 +42,15 @@ namespace ProjectDataService.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutStudentTask(int id, StudentTask studentTask)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || id != studentTask.StudentTaskId)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != studentTask.StudentTaskId)
-            {
-                return BadRequest();
-            }
+            //if (id != studentTask.StudentTaskId)
+            //{
+            //    return BadRequest();
+            //}
 
             db.Entry(studentTask).State = EntityState.Modified;
 

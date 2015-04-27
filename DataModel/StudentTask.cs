@@ -9,13 +9,7 @@ namespace DataModel
 {
     public class StudentTask
     {
-        // går det an å kun ha id fra student og gruppe?
-        // StudentTask object må inneholde Student og Group object når den legges til i db...
-        public StudentTask()
-        {
-            //this.Student = new Student();
-            //this.Group = new Group();
-        }
+        public StudentTask() {}
         public int StudentTaskId { get; set; }
 
         [Required]
@@ -32,12 +26,9 @@ namespace DataModel
         [Required]
         public int Status { get; set; }
 
-        // Navigation Property
-        //public Student Student { get; set; }
         // Foreign Key
         public int StudentId { get; set; }
 
-        //public Group Group { get; set; }
         // Foreign Key
         public int GroupId { get; set; }
     }

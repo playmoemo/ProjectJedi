@@ -130,20 +130,21 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
-                <!--Add a style for the Details header on all pages...-->
-                <Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
                 <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1">
-                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding Deadline}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource CustomSubheaderTextBlockStyle}"/>
                 </StackPanel>
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.Resources>
 
                     </Grid.Resources>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="70"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -156,27 +157,32 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{StaticResource TaskDescription}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{StaticResource TaskDeadline}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{StaticResource TaskStatus}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{StaticResource TaskOwner}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{StaticResource TaskGroup}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{StaticResource TaskPickGroup}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{StaticResource TaskPickOwner}" Style="{StaticResource SplitSelectedItemDetailsStyle}"/>
 
-                    <TextBox x:Name="txtbStudentTaskName" Grid.Row="0" Grid.Column="1" Margin="0,20,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
+                    <TextBox x:Name="txtbStudentTaskName" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0" Text="{Binding StudentTaskName}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
                     <TextBox x:Name="txtbStudentTaskDescription" Grid.Row="1" Grid.Column="1" Margin="0,20,0,0" Text="{Binding Description}" Style="{StaticResource SplitSelectedItemDetailsEdit}"/>
-                    <!--Set the value from selectedItem-->
+                    
                     <StackPanel Grid.Row="2" Grid.Column="1">
                         <DatePicker x:Name="datePickerDeadline" HorizontalAlignment="Center" Margin="0,5"/>
-                        <TimePicker x:Name="timePickerDeadline" HorizontalAlignment="Center" Margin="0,5"/>
                     </StackPanel>
-                    
-                    
-                    
-                    <!--Use Enum for TaskStatus (done/in progress/not started)-->
-                    <!--Start with 'not started' when new Task is Created-->
-                    <ComboBox x:Name="comboStudentTaskStatus" Grid.Row="3" Grid.Column="1" Visibility="Visible" Height="Auto"/>
-                    <!--
-                    <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0, 10">
-                        <ListBox x:Name="listBoxStudentTasks"/>
+
+                    <ComboBox x:Name="comboStudentTaskStatus" Grid.Row="3" Grid.Column="1" Visibility="Visible" Height="Auto" Margin="0,10"/>
+                    <TextBox x:Name="txtbOwner" Grid.Row="4" Grid.Column="1" Text="{Binding StudentId}" Style="{StaticResource SplitSelectedItemDetailsEdit}" Margin="0,10,0,10"/>
+                    <TextBox x:Name="txtbStudentTaskGroup" Grid.Row="5" Grid.Column="1" Text="{Binding GroupId}" Style="{StaticResource SplitSelectedItemDetailsEdit}" Margin="0,10,0,10"/>
+                    <ScrollViewer Grid.Row="6" Grid.Column="1" Margin="0,3">
+                        <ListBox x:ConnectionId='11' x:Name="listBoxPickGroup"                                                     />
                     </ScrollViewer>
-                    -->
-                    <Button x:ConnectionId='7' x:Name="btnCreateTask" Grid.Row="4" Grid.Column="0" Content="Create Task" FontSize="20" HorizontalAlignment="Center"                            />
-                    <Button x:ConnectionId='8' x:Name="btnSaveTaskChanges" Grid.Row="4" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                 />
+                    <ScrollViewer Grid.Row="7" Grid.Column="1" Margin="0,3">
+                        <ListBox x:ConnectionId='10' x:Name="listBoxPickOwner"                                                      />
+                    </ScrollViewer>
+                    <StackPanel Grid.Row="8" Grid.Column="0" Orientation="Horizontal">
+                        <Button x:ConnectionId='8' x:Name="btnCreateTask" Content="Create Task" FontSize="20" Margin="50,0,0,0"                            />
+                        <Button x:ConnectionId='9' x:Name="btnSaveNewStudentTask" Content="Save" FontSize="20" Margin="50,0,0,0"                                    />
+                    </StackPanel>
+                    <Button x:ConnectionId='7' x:Name="btnSaveTaskChanges" Grid.Row="8" Grid.Column="1" Content="Save Changes" FontSize="20" HorizontalAlignment="Center"                                 />
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -240,7 +246,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='9' x:Name="appBarDeleteTask" Icon="Delete" Label="Delete Student"                               />
+                <AppBarButton x:ConnectionId='12' x:Name="appBarDeleteTask" Icon="Delete" Label="Delete Student"                               />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

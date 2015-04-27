@@ -94,7 +94,7 @@ namespace ProjectJediApplication
             admin = arguments.Administrator;
 
             txtUserNameMainPage.Text = admin.UserName;
-
+            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
             populateCriticalTasksListBox();
         }
     }

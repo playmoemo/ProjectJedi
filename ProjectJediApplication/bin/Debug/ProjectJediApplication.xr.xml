@@ -19,6 +19,7 @@
     <RootPropertyPathName Name="LastName" />
     <RootPropertyPathName Name="FirstName" />
     <RootPropertyPathName Name="StudentTasks" />
+    <RootPropertyPathName Name="StudentId" />
     <RootPropertyPathName Name="StudentTaskName" />
     <RootPropertyPathName Name="Deadline" />
     <RootPropertyPathName Name="TimeSheets" />
@@ -244,12 +245,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
+    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
     </RootType>

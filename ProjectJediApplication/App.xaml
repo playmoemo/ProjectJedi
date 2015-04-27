@@ -26,6 +26,11 @@
         <x:String x:Key="TaskDescription">Description:</x:String>
         <x:String x:Key="TaskDeadline">Deadline:</x:String>
         <x:String x:Key="TaskStatus">Status:</x:String>
+        <x:String x:Key="TaskOwner">Owner:</x:String>
+        <x:String x:Key="TaskGroup">Group:</x:String>
+        <x:String x:Key="TaskPickGroup">Pick Group:</x:String>
+        <x:String x:Key="TaskPickOwner">Pick Owner:</x:String>
+
         <!--TimesheetsPage-->
         
         <x:String x:Key="Task">Task 1</x:String>

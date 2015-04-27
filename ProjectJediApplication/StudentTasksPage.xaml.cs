@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -83,7 +84,7 @@ namespace ProjectJediApplication
             var studentTask = (StudentTask)this.itemListView.SelectedItem;
             // set DatePicker and TimePicker
             datePickerDeadline.Date = studentTask.Deadline.Date;
-            timePickerDeadline.Time = studentTask.Deadline.TimeOfDay;
+            //timePickerDeadline.Time = studentTask.Deadline.TimeOfDay;
 
             TaskStatus[] status = { TaskStatus.New, TaskStatus.Active, TaskStatus.Finished };
             comboStudentTaskStatus.Items.Clear();
@@ -335,6 +336,8 @@ namespace ProjectJediApplication
             var studentTask = (StudentTask)this.itemListView.SelectedItem;
             var taskName = txtbStudentTaskName.Text;
             var description = txtbStudentTaskDescription.Text;
+            var studentId = int.Parse(txtbOwner.Text);
+            
             
             string dateString = datePickerDeadline.Date.ToString();
             DateTime dateTime = datePickerDeadline.Date.DateTime;
@@ -346,7 +349,7 @@ namespace ProjectJediApplication
                 Description = description,
                 Deadline = dateTime,
                 Status = (int)status,
-                StudentId = studentTask.StudentId,
+                StudentId = studentId,
                 GroupId = studentTask.GroupId
             };
 
@@ -358,13 +361,72 @@ namespace ProjectJediApplication
 
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
-            //Clear all fields
+            //Clear and set fields
             txtbStudentTaskName.Text = "";
             txtbStudentTaskDescription.Text = "";
-            //datePickerDeadline.Date.Add();
-            //comboStudentTaskStatus.Items.Select();
+            datePickerDeadline.Date = DateTime.Now;
+            comboStudentTaskStatus.SelectedIndex = 0;
+            txtbOwner.Text = admin.StudentId.ToString();
 
-            //POST
+            
+            ProjectJediDataSource.ProjectJediDataSource.populateLocalResources();
+            var groups = ProjectJediDataSource.ProjectJediDataSource.Groups;
+            var students = ProjectJediDataSource.ProjectJediDataSource.Students;
+
+            listBoxPickGroup.Items.Clear();
+            listBoxPickGroup.DisplayMemberPath = "GroupName";
+            foreach (var group in groups)
+            {
+                listBoxPickGroup.Items.Add(group);
+            }
+
+            listBoxPickOwner.Items.Clear();
+            listBoxPickOwner.DisplayMemberPath = "UserName";
+            foreach (var student in students)
+            {
+                listBoxPickOwner.Items.Add(student);
+            }
+
+            txtbStudentTaskName.Focus(FocusState.Programmatic);
+        }
+
+        private async void btnSaveNewStudentTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtbStudentTaskName.Text.Count() < 1 || txtbStudentTaskDescription.Text.Count() < 1)
+            {
+                MessageDialog missingInputDialog = new MessageDialog("You are missing some input.");
+                await missingInputDialog.ShowAsync();
+            }
+            else
+            {
+                StudentTask studentTask = new StudentTask()
+                { 
+                    StudentTaskName = txtbStudentTaskName.Text,
+                    Description = txtbStudentTaskDescription.Text,
+                    Deadline = datePickerDeadline.Date.DateTime,
+                    Status = comboStudentTaskStatus.SelectedIndex,
+                    StudentId = int.Parse(txtbOwner.Text),
+                    GroupId = int.Parse(txtbStudentTaskGroup.Text)
+                };
+
+                await ProjectJediDataSource.ProjectJediDataSource.PostStudentTaskAsync(studentTask);
+
+                this.Frame.Navigate(typeof(StudentTasksPage), arguments);
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+            }
+
+        }
+
+        private void listBoxPickGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Group group = (Group)listBoxPickGroup.SelectedItem;
+            txtbStudentTaskGroup.Text = group.GroupId.ToString();
+        }
+
+        private void listBoxPickOwner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Student student = (Student)listBoxPickOwner.SelectedItem;
+            txtbOwner.Text = student.StudentId.ToString();
         }
     }
 }
